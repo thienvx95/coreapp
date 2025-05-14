@@ -156,4 +156,24 @@ class BaseRepository(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
             return count
         except Exception as e:
             logger.error(f"Error counting documents in {self.collection.name}: {str(e)}")
+            raise
+
+    async def find_one(self, filter_dict: Dict[str, Any]) -> Optional[ModelType]:
+        """
+        Find a single document matching the filter criteria.
+        
+        Args:
+            filter_dict: Dictionary of filters to apply
+            
+        Returns:
+            The document if found, None otherwise
+        """
+        try:
+            if doc := await self.collection.find_one(filter_dict):
+                logger.info(f"Found document in {self.collection.name} matching filter: {filter_dict}")
+                return self.model(**doc)
+            logger.warning(f"No document found in {self.collection.name} matching filter: {filter_dict}")
+            return None
+        except Exception as e:
+            logger.error(f"Error finding document in {self.collection.name}: {str(e)}")
             raise 

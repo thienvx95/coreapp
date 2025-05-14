@@ -1,0 +1,190 @@
+2025-05-14 22:03:53 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:03:53 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:03:53 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:03:53 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:03:53 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:03:53 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:03:53 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:04:25 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:04:25 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:04:25 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:04:25 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:04:25 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:04:25 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:04:25 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:05:14 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:05:14 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:05:14 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:05:14 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:05:14 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:05:14 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:05:14 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:05:20 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:05:20 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:05:20 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:05:20 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:05:20 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:05:20 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:05:20 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:05:28 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:05:28 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:05:28 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:05:28 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:05:28 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:05:28 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:05:28 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:05:36 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:05:36 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:05:36 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:05:36 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:05:36 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:05:36 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:05:36 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:06:07 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:06:07 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:06:07 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:06:07 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:06:07 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:06:07 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:06:07 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:06:13 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:06:13 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:06:13 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:06:13 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:06:13 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:06:13 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:06:13 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:06:16 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:06:16 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:06:16 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:06:16 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:06:16 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:06:16 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:06:16 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:06:21 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:06:21 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:06:21 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:06:21 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:06:21 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:06:21 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:06:21 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:07:05 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:07:05 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:07:05 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:07:05 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:07:05 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:07:05 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:07:05 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:07:25 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:07:25 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:07:25 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:07:25 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:07:25 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:07:25 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:07:25 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:09:22 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:09:22 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:09:22 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:09:22 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:09:22 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:09:22 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:09:22 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:09:22 | INFO     | app.infrastructure.events.startup:startup_db_client:28 - Connected to MongoDB and initialized repositories
+2025-05-14 22:10:15 | INFO     | app.infrastructure.events.shutdown:shutdown_db_client:15 - Shutting down FastAPI MongoDB
+2025-05-14 22:10:15 | INFO     | app.infrastructure.events.shutdown:shutdown_db_client:17 - Closed MongoDB connection
+2025-05-14 22:10:16 | INFO     | ==================================================
+2025-05-14 22:10:16 | INFO     | Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:10:16 | INFO     | Environment: development
+2025-05-14 22:10:16 | INFO     | Debug mode: True
+2025-05-14 22:10:16 | INFO     | API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:10:16 | INFO     | Database: Stock
+2025-05-14 22:10:16 | INFO     | ==================================================
+2025-05-14 22:10:16 | INFO     | Connected to MongoDB and initialized repositories
+2025-05-14 22:10:21 | INFO     | Shutting down FastAPI MongoDB
+2025-05-14 22:10:21 | INFO     | Closed MongoDB connection
+2025-05-14 22:10:21 | INFO     | app.infrastructure.events.startup:startup_db_client:17 - ==================================================
+2025-05-14 22:10:21 | INFO     | app.infrastructure.events.startup:startup_db_client:18 - Starting FastAPI MongoDB v1.0.0
+2025-05-14 22:10:21 | INFO     | app.infrastructure.events.startup:startup_db_client:19 - Environment: development
+2025-05-14 22:10:21 | INFO     | app.infrastructure.events.startup:startup_db_client:20 - Debug mode: True
+2025-05-14 22:10:21 | INFO     | app.infrastructure.events.startup:startup_db_client:21 - API URL: http://0.0.0.0:8000/api/v1
+2025-05-14 22:10:21 | INFO     | app.infrastructure.events.startup:startup_db_client:22 - Database: Stock
+2025-05-14 22:10:21 | INFO     | app.infrastructure.events.startup:startup_db_client:23 - ==================================================
+2025-05-14 22:10:21 | INFO     | app.infrastructure.events.startup:startup_db_client:28 - Connected to MongoDB and initialized repositories
+2025-05-14 22:10:51 | INFO     | app.infrastructure.events.shutdown:shutdown_db_client:15 - Shutting down FastAPI MongoDB
+2025-05-14 22:10:51 | INFO     | app.infrastructure.events.shutdown:shutdown_db_client:17 - Closed MongoDB connection
+2025-05-14 22:10:55 | INFO     | app.infrastructure.events.shutdown:shutdown_db_client:15 - Shutting down FastAPI MongoDB
+2025-05-14 22:10:55 | INFO     | app.infrastructure.events.shutdown:shutdown_db_client:17 - Closed MongoDB connection
+2025-05-14 22:10:58 | INFO     | app.infrastructure.events.shutdown:shutdown_db_client:15 - Shutting down FastAPI MongoDB
+2025-05-14 22:10:58 | INFO     | app.infrastructure.events.shutdown:shutdown_db_client:17 - Closed MongoDB connection
+2025-05-14 22:13:32 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1 Status: 404 Duration: 0.00s
+2025-05-14 22:13:33 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /favicon.ico Status: 404 Duration: 0.00s
+2025-05-14 22:13:40 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 404 Duration: 0.00s
+2025-05-14 22:13:55 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:13:56 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 200 Duration: 0.01s
+2025-05-14 22:14:09 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/health/db Status: 200 Duration: 1.39s
+2025-05-14 22:14:39 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:14:39 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 200 Duration: 0.01s
+2025-05-14 22:16:26 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: / Status: 200 Duration: 0.00s
+2025-05-14 22:16:47 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:16:48 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 200 Duration: 0.01s
+2025-05-14 22:16:50 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:16:50 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 200 Duration: 0.00s
+2025-05-14 22:17:30 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:17:31 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 200 Duration: 0.01s
+2025-05-14 22:20:28 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:20:28 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:20:28 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:20:40 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:20:40 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:20:40 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:20:41 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:20:41 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:20:41 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:21:03 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:21:03 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:21:03 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:21:04 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:21:04 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:21:04 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:21:05 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:21:05 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:21:05 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:21:06 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:21:06 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:21:06 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:21:07 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:21:07 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:21:07 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:21:16 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:21:17 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:21:17 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:21:52 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:21:52 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:21:52 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:21:52 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:21:53 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:21:53 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:21:53 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:21:53 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:21:53 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:21:53 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:21:53 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:21:53 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:21:53 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:21:53 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:21:54 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:21:55 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:21:55 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:22:14 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:22:14 | ERROR    | app.infrastructure.middleware.error_handler:dispatch:12 - Error processing request: 'components'
+2025-05-14 22:22:14 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 500 Duration: 0.00s
+2025-05-14 22:22:21 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:22:21 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:22:21 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:22:21 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 200 Duration: 0.00s
+2025-05-14 22:22:22 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:22:22 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 200 Duration: 0.00s
+2025-05-14 22:22:50 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.00s
+2025-05-14 22:22:50 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 200 Duration: 0.00s
+2025-05-14 22:35:28 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /swagger Status: 200 Duration: 0.01s
+2025-05-14 22:35:28 | INFO     | app.infrastructure.middleware.logging:dispatch:18 - Method: GET Path: /api/v1/openapi.json Status: 200 Duration: 0.01s

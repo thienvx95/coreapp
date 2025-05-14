@@ -1,6 +1,5 @@
 from typing import Dict, Type
 from app.core.viewmodels.base import BaseViewModelMapper
-from app.core.viewmodels.item_viewmodel import ItemViewModelMapper
 
 class ViewModelFactory:
     """
@@ -21,19 +20,6 @@ class ViewModelFactory:
         """
         mapper_name = mapper_class.__name__
         if mapper_name not in cls._mappers:
-            if mapper_class == ItemViewModelMapper:
-                cls._mappers[mapper_name] = mapper_class()
-            else:
-                raise ValueError(f"Unknown mapper class: {mapper_class}")
+            raise ValueError(f"Unknown mapper class: {mapper_class}")
         
-        return cls._mappers[mapper_name]
-
-    @classmethod
-    def get_item_mapper(cls) -> ItemViewModelMapper:
-        """
-        Get the item view model mapper instance.
-        
-        Returns:
-            An instance of ItemViewModelMapper
-        """
-        return cls.get_mapper(ItemViewModelMapper) 
+        return cls._mappers[mapper_name] 

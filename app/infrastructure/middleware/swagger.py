@@ -14,6 +14,6 @@ def setup_swagger_middleware(app: FastAPI) -> None:
     app.openapi = lambda: custom_openapi(app)
 
     # Custom Swagger UI
-    @app.get("/docs", include_in_schema=False)
+    @app.get("/swagger", include_in_schema=False)
     async def custom_swagger_ui_html_route():
         return custom_swagger_ui_html(app) 

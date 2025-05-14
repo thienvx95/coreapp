@@ -1,7 +1,6 @@
 from typing import Dict, Type
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from app.core.repository.base import BaseRepository
-from app.core.repository.item_repository import ItemRepository
 
 class RepositoryFactory:
     """
@@ -41,14 +40,4 @@ class RepositoryFactory:
         if repository_name not in cls._repositories:
             cls._repositories[repository_name] = repository_class(cls._db)
         
-        return cls._repositories[repository_name]
-
-    @classmethod
-    def get_item_repository(cls) -> ItemRepository:
-        """
-        Get the item repository instance.
-        
-        Returns:
-            An instance of ItemRepository
-        """
-        return cls.get_repository(ItemRepository) 
+        return cls._repositories[repository_name] 

@@ -46,14 +46,6 @@ def custom_openapi(app: FastAPI):
     # Add tags metadata
     openapi_schema["tags"] = [
         {
-            "name": "items",
-            "description": "Operations with items. The **items** endpoint allows you to manage your items.",
-            "externalDocs": {
-                "description": "Items external docs",
-                "url": "https://fastapi.tiangolo.com/",
-            },
-        },
-        {
             "name": "health",
             "description": "Health check endpoints to verify the API status.",
         },

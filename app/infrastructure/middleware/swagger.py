@@ -1,7 +1,5 @@
 from fastapi import FastAPI
-from fastapi.openapi.docs import get_swagger_ui_html
-from app.core.config import settings
-from app.core.swagger import custom_openapi, custom_swagger_ui_html
+from app.core.swagger.swagger import custom_openapi, custom_swagger_ui_html
 
 def setup_swagger_middleware(app: FastAPI) -> None:
     """

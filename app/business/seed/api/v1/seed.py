@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Depends
-
-from app.core.services.factory import ServiceFactory
-from app.core.services.mongo_seed.mongo_seed_service import MongoSeeder
+from app.business.seed.services.mongo_seed_service import MongoSeeder
+from app.core.container import Container
 
 router = APIRouter()
 
@@ -9,7 +8,7 @@ def get_mongo_seed_service() -> MongoSeeder:
     """
     Get the setting service instance.
     """
-    return ServiceFactory.get_service(MongoSeeder)
+    return Container.mongo_seeder()
 
 
 @router.post("/run-seed")

@@ -1,10 +1,10 @@
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
+from app.business.roles.services.role_service import RoleService
 from app.business.user.services.user_service import UserService
-from app.core.services.role.role_service import RoleService
-from app.core.services.factory import ServiceFactory
-from app.entities.user import User
 from app.business.user.view_model.user_viewmodel import UserCreate, UserUpdate
+from app.business.user.entities.user import User
+from app.core.container import Container
 
 router = APIRouter()
 
@@ -12,13 +12,13 @@ def get_user_service() -> UserService:
     """
     Get the user service instance.
     """
-    return ServiceFactory.get_service(UserService)
+    return Container.user_service()
 
 def get_role_service() -> RoleService:
     """
     Get the role service instance.
     """
-    return ServiceFactory.get_service(RoleService)
+    return Container.role_service()
 
 @router.post("/", response_model=User, status_code=status.HTTP_201_CREATED)
 async def create_user(

@@ -43,14 +43,6 @@ def custom_openapi(app: FastAPI):
     #     }
     # }
     
-    # Add tags metadata
-    openapi_schema["tags"] = [
-        {
-            "name": "health",
-            "description": "Health check endpoints to verify the API status.",
-        },
-    ]
-    
     app.openapi_schema = openapi_schema
     return app.openapi_schema
 

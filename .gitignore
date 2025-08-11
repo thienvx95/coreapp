@@ -27,3 +27,4 @@ ENV/
 .venv
 env.bak/
 venv.bak/
+logs/

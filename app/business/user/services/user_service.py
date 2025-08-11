@@ -1,17 +1,15 @@
-from app.core.services.base import BaseService
-from app.core.data.mongo_db.mongo_repository import BaseRepository
-from app.entities.user import User
-from app.core.viewmodels.user.user_viewmodel import UserCreate, UserUpdate
+from app.business.common.services.base import BaseService
+from app.core.container import Container
+from app.business.user.entities import User
+from app.business.user.view_model.user_viewmodel import UserCreate, UserUpdate
 from app.core.utils.password import hash_password
-from motor.motor_asyncio import AsyncIOMotorDatabase
-
 
 class UserService(BaseService[User, UserCreate, UserUpdate]):
     """
     Service for user operations.
     """
-    def __init__(self, db: AsyncIOMotorDatabase):
-        repository = BaseRepository(db, "users", User)
+    def __init__(self):
+        repository = Container.generic_repository(collection_name="users", model=User)
         super().__init__(repository)
         self.repository = repository
 

@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     APP_ENV: str = "development"
     DEBUG: bool = True
     API_V1_STR: str = "/api/v1"
+    SWAGGER_URL: str = "/swagger"
 
     # Server Settings
     HOST: str = "0.0.0.0"
@@ -16,12 +17,16 @@ class Settings(BaseSettings):
     WORKERS: int = 1
     RELOAD: bool = True
 
+    # Database Provider
+    DB_PROVIDER: str
     # MongoDB Settings
     MONGODB_URL: str
     DATABASE_NAME: str
     MONGODB_MAX_CONNECTIONS: int = 100
     MONGODB_MIN_CONNECTIONS: int = 1
 
+    # Cache Provider
+    CACHE_PROVIDER: str
     # Security Settings
     SECRET_KEY: str
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30

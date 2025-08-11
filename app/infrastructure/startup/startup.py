@@ -1,46 +1,40 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from app.core.data.db_factory import DBFactory
+
+from app.business.application_info.services import ApplicationInfoService
+from app.core.data import DBFactory
 from app.core.config import settings
-from app.core.data.repository_factory import RepositoryFactory
-from app.core.services.factory import ServiceFactory
 from app.core.logging import logger
+from app.core.utils import get_banner
+from app.core.container import Container
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """
-    Lifespan context manager for application startup and shutdown events.
+    Lifespan context manager for application startup and shutdown startup.
     
     Args:
         app (FastAPI): The FastAPI application instance
     """
     # Startup
-    logger.info("=" * 50)
-    logger.info(f"Starting {settings.APP_NAME} v{settings.APP_VERSION}")
-    logger.info(f"Environment: {settings.APP_ENV}")
-    logger.info(f"Debug mode: {settings.DEBUG}")
-    logger.info(f"API URL: http://{settings.HOST}:{settings.PORT}{settings.API_V1_STR}")
-    logger.info(f"Database: {settings.DATABASE_NAME}")
-    logger.info("=" * 50)
+    get_banner()
 
-    # Connect to data
-    DBFactory.initialize()
-    provider = DBFactory.get_provider()
-    db = await provider.connect()
-    RepositoryFactory.initialize(db)
-    ServiceFactory.initialize(db)
-    print("Connected to MongoDB and initialized repositories")
+    # Initialize Db
+    await DBFactory().get_provider().connect()
+    application_info_service: ApplicationInfoService = Container.application_info_service()
+    await application_info_service.set_application_info()
+    logger.info("Connected to MongoDB and initialized repositories")
 
     yield
 
     # Shutdown
-    print(f"Shutting down {settings.APP_NAME}")
-    await provider.close()
-    print("Closed MongoDB connection")
+    logger.info(f"Shutting down {settings.APP_NAME}")
+    await DBFactory().get_provider().close()
+    logger.info("Closed MongoDB connection")
 
 def setup_startup_events(app: FastAPI) -> None:
     """
-    Configure startup events for the application.
+    Configure startup startup for the application.
     
     Args:
         app (FastAPI): The FastAPI application instance

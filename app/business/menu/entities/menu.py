@@ -1,4 +1,4 @@
-from typing import List, Optional, Union
+from typing import ClassVar, List, Optional, Union
 from pydantic import Field, HttpUrl
 from app.business.common.entities.base import MongoBaseModel
 
@@ -6,6 +6,7 @@ class Menu(MongoBaseModel):
     """
     Menu model representing a navigation menu item in the system.
     """
+    collection_name: ClassVar[str] = "menus"
     access: Optional[Union[str, List[str]]] = Field(None, description="Access control for the menu item")
     authority: List[str] = Field(..., description="Authority required to access this menu item")
     children: Optional[List["Menu"]] = Field(None, description="Child menu items")

@@ -1,4 +1,4 @@
-from typing import List, Optional, Union, Any
+from typing import ClassVar, List, Optional, Union, Any
 from pydantic import Field
 from app.business.common.entities.base import MongoBaseModel
 
@@ -24,6 +24,7 @@ class Setting(MongoBaseModel):
     """
     Setting model representing a system setting.
     """
+    collection_name: ClassVar[str] = "settings"
     type: str = Field(..., description="Setting type (boolean, string, int, select, multiSelect, font, date, group, section)")
     public: bool = Field(default=False, description="Whether the setting is public")
     group: Optional[str] = Field(None, description="Group the setting belongs to")

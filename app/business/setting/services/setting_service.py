@@ -1,18 +1,13 @@
 from app.business.common.services.base import BaseService
-from app.core.container import Container
 from app.business.setting.entities.setting import Setting
 from app.business.setting.view_model.setting_viewmodel import SettingCreate, SettingUpdate
 from typing import List, Optional
+
 
 class SettingService(BaseService[Setting, SettingCreate, SettingUpdate]):
     """
     Service for setting operations.
     """
-    def __init__(self):
-        repository = Container.generic_repository(collection_name="settings", model=Setting)
-        super().__init__(repository)
-        self.repository = repository
-
     async def get_by_name(self, name: str) -> Optional[Setting]:
         """
         Get a setting by name.

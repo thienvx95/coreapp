@@ -4,13 +4,13 @@ from app.core.constants import Application_Version
 from app.core.data import DBFactory
 from app.business.application_info.entities.application_info import ApplicationInfo
 from app.business.common.entities.migration_db.migration_db import MigrationDB
-from app.core.container import Container
+from app.core.data.repository_factory import RepositoryFactory
 
 class ApplicationInfoService:
     application_info: ApplicationInfo = None
-    def __init__(self, repository_factory):
-        self.repository = repository_factory(collection_name="application_info", model=ApplicationInfo)
-        self.db_migration_repository = repository_factory(collection_name="migration_dbs", model=MigrationDB)
+    def __init__(self):
+        self.repository = RepositoryFactory().get_repository(ApplicationInfo)
+        self.db_migration_repository = RepositoryFactory().get_repository(model=MigrationDB)
 
     async def get_application_info(self):
         """

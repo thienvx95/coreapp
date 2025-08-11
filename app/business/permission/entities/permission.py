@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import ClassVar, Optional
 from pydantic import Field
 from app.business.common.entities.base import MongoBaseModel
 
@@ -6,6 +6,7 @@ class Permission(MongoBaseModel):
     """
     Permission model representing access rights to a menu item for a specific role.
     """
+    collection_name: ClassVar[str] = "permissions"
     function_id: str = Field(..., description="ID of the menu item this permission applies to")
     role_id: str = Field(..., description="ID of the role this permission applies to")
     create: bool = Field(default=False, description="Whether the role can create items")

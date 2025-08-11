@@ -1,18 +1,13 @@
 from app.business.common.services.base import BaseService
-from app.core.container import Container
 from app.business.user.entities import User
 from app.business.user.view_model.user_viewmodel import UserCreate, UserUpdate
 from app.core.utils.password import hash_password
+
 
 class UserService(BaseService[User, UserCreate, UserUpdate]):
     """
     Service for user operations.
     """
-    def __init__(self):
-        repository = Container.generic_repository(collection_name="users", model=User)
-        super().__init__(repository)
-        self.repository = repository
-
     async def create(self, obj_in: UserCreate) -> User:
         """
         Create a new user.

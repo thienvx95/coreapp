@@ -1,5 +1,4 @@
 from app.business.menu.view_model.menu_viewmodel import MenuCreate, MenuUpdate
-from app.core.container import Container
 from app.business.common.services.base import BaseService
 from app.business.menu.entities.menu import Menu
 from typing import List
@@ -9,10 +8,10 @@ class MenuService(BaseService[Menu, MenuCreate, MenuUpdate]):
     """
     Service for menu operations.
     """
+    model = Menu
+    
     def __init__(self):
-        repository = Container.generic_repository(collection_name="menus", model=Menu)
-        super().__init__(repository)
-        self.repository = repository
+        super().__init__()
         self.permission_service = None
 
     async def get_by_path(self, path: str) -> Menu | None:

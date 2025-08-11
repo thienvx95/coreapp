@@ -1,15 +1,21 @@
-from typing import Generic, Optional, List
+from typing import Generic, Optional, List, Type
 
 from app.core.data.model_type import ModelType, CreateSchemaType, UpdateSchemaType
-from app.core.data.mongo_db.mongo_repository import BaseRepository
+from app.core.data.base_repository import BaseRepository
+from app.core.data.repository_factory import RepositoryFactory
 from app.core.logging import logger
+
 
 class BaseService(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     """
     Base service class that provides common CRUD operations.
     """
-    def __init__(self, repository: BaseRepository[ModelType, CreateSchemaType, UpdateSchemaType]):
-        self.repository = repository
+    def __init__(self):
+        if self.model is None:
+            raise ValueError("Service must define model, or provide a repository instance")
+        self.repository = RepositoryFactory.get_repository(
+            model=ModelType,
+        )
         self.logger = logger
 
     async def create(self, obj_in: CreateSchemaType) -> ModelType:

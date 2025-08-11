@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List, Optional, Annotated
+from typing import ClassVar, List, Optional, Annotated
 from pydantic import BaseModel, EmailStr, Field, StringConstraints, computed_field
 import hashlib
 from app.business.common.entities.base import MongoBaseModel
@@ -8,6 +8,7 @@ class User(MongoBaseModel):
     """
     User model representing a system user.
     """
+    collection_name: ClassVar[str] = "users"
     email: EmailStr = Field(..., description="User's email address")
     username: Annotated[str, StringConstraints(min_length=3, max_length=50)] = Field(..., description="User's username")
     password: str = Field(..., description="Hashed password")

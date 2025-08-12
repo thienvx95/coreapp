@@ -1,8 +1,8 @@
 from typing import ClassVar, Optional, Annotated
 from pydantic import Field, StringConstraints
-from app.business.common.entities.base import MongoBaseModel
+from app.business.common.entities.base import BaseModel
 
-class Role(MongoBaseModel):
+class Role(BaseModel):
     """
     Role model representing a user role in the system.
     """

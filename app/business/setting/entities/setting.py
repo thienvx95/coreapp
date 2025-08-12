@@ -1,8 +1,8 @@
 from typing import ClassVar, List, Optional, Union, Any
 from pydantic import Field
-from app.business.common.entities.base import MongoBaseModel
+from app.business.common.entities.base import BaseModel
 
-class SettingSelectOption(MongoBaseModel):
+class SettingSelectOption(BaseModel):
     """
     Setting select option model representing an option for select and multiSelect settings.
     """
@@ -20,7 +20,7 @@ class SettingSelectOption(MongoBaseModel):
 # Define a type for setting values
 SettingValue = Union[bool, str, int, List[str], None]
 
-class Setting(MongoBaseModel):
+class Setting(BaseModel):
     """
     Setting model representing a system setting.
     """

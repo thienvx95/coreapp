@@ -6,7 +6,7 @@ from app.business.roles.entities.role import Role
 from app.business.seed.view_model.model_seed import ModelSeed
 from app.business.setting.entities.setting import Setting
 from app.business.user.entities.user import User
-from app.core import logging
+from app.core.logging import logger 
 from app.core.data.repository_factory import RepositoryFactory
 from app.business.common.services.file_reader.file_reader_service import FileReaderService
 
@@ -21,14 +21,16 @@ class MongoSeeder:
     def __init__(self, file_reader_service: FileReaderService):
         self.file_reader_service = file_reader_service
 
-    def seed(self) -> bool:
+    async def seed(self) -> bool:
         try:
             for seed in self.models:
                 content = self.file_reader_service.read_file(seed.path)
                 object_data = json.load(content)
+                print(content)
+            
                 repo = RepositoryFactory.get_repository(model=seed.model)
-                repo.insert_many(object_data)
+                await repo.insert_many(object_data)
             return True
         except Exception as e:
-            logging.error(e)
+            logger.error(e)
             return False

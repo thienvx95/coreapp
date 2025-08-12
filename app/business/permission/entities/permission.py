@@ -1,8 +1,8 @@
 from typing import ClassVar, Optional
 from pydantic import Field
-from app.business.common.entities.base import MongoBaseModel
+from app.business.common.entities.base import BaseModel
 
-class Permission(MongoBaseModel):
+class Permission(BaseModel):
     """
     Permission model representing access rights to a menu item for a specific role.
     """

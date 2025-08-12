@@ -1,9 +1,9 @@
 from typing import ClassVar
 from pydantic import Field
 
-from app.business.common.entities.base import MongoBaseModel
+from app.business.common.entities.base import BaseModel
 
-class ApplicationInfo(MongoBaseModel):
+class ApplicationInfo(BaseModel):
     collection_name: ClassVar[str] = "application_info"
     app_version: str = Field(..., description="Application version of the application")
     database_provider: str = Field(..., description="Database provider")

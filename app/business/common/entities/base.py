@@ -1,31 +1,33 @@
 from datetime import datetime, UTC
-from typing import Optional
+from typing import Any, Optional
 from pydantic import BaseModel, Field
-from bson import ObjectId
 
-class PyObjectId(ObjectId):
-    @classmethod
-    def __get_validators__(cls):
-        yield cls.validate
+from app.business.common.entities.pydantic_object_id import PydanticObjectId
 
-    @classmethod
-    def validate(cls, v):
-        if not ObjectId.is_valid(v):
-            raise ValueError("Invalid ObjectId")
-        return ObjectId(v)
-
-    @classmethod
-    def __get_pydantic_json_schema__(cls, core_schema, handler):
-        return {"type": "string"}
-
-class MongoBaseModel(BaseModel):
-    id: Optional[PyObjectId] = Field(alias="_id", default=None)
-    created_at: datetime = Field(default_factory=datetime.now(UTC))
-    updated_at: datetime = Field(default_factory=datetime.now(UTC))
+class BaseModel(BaseModel):
+    def __init__(self, **data: Any):
+        super().__init__(**data)
+        # Only set created_at during initial creation if it's not provided
+        if not self.created_at:
+            self.created_at = datetime.now(UTC)
+        # Always update the updated_at timestamp
+        self.updated_at = datetime.now(UTC)
+        
+    def update(self, **data: Any):
+        """Update model and set updated_at timestamp"""
+        for key, value in data.items():
+            if hasattr(self, key):
+                setattr(self, key, value)
+        self.updated_at = datetime.now(UTC)
+        return self
+        
+    id: Optional[PydanticObjectId] = Field(alias="_id", default=PydanticObjectId())
+    created_at: datetime = Field(None, description="Created at")
+    updated_at: datetime = Field(None, description="Updated at")
     created_by: Optional[str] = Field(None, description="ID of user who created this record")
     updated_by: Optional[str] = Field(None, description="ID of user who last updated this record")
 
     class Config:
-        json_encoders = {ObjectId: str}
+        json_encoders = {PydanticObjectId: str}
         populate_by_name = True
         arbitrary_types_allowed = True 

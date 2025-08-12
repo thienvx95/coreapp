@@ -1,8 +1,8 @@
 from typing import ClassVar, List, Optional, Union
 from pydantic import Field, HttpUrl
-from app.business.common.entities.base import MongoBaseModel
+from app.business.common.entities.base import BaseModel
 
-class Menu(MongoBaseModel):
+class Menu(BaseModel):
     """
     Menu model representing a navigation menu item in the system.
     """

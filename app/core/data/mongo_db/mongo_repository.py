@@ -1,5 +1,6 @@
 from typing import Type, Optional, List, Dict, Any
 from pymongo.asynchronous.database import AsyncDatabase
+from pymongo.asynchronous.collection import AsyncCollection
 from bson import ObjectId
 
 from app.core.data.base_repository import BaseRepository
@@ -9,6 +10,9 @@ from app.business.common.view_model.pagingation import PaginationRequest, Pagina
 
 
 class MongoRepository(BaseRepository):
+    db: AsyncDatabase
+    collection: AsyncCollection
+    model: Type[ModelType]
     def __init__(
         self,
         db: AsyncDatabase,
@@ -37,14 +41,14 @@ class MongoRepository(BaseRepository):
         try:
             obj_dict = data.model_dump(by_alias=True, exclude_unset=True)
             result = await self.collection.update_one(
-                filter_dict,
-                {"$set": obj_dict}
+                filter=filter_dict,
+                update={"$set": obj_dict}
             )
             if result.modified_count == 0:
-                logger.warning(f"Document not found for update in {self.collection.name} with id: {id}")
+                logger.warning(f"Document not found for update in {self.collection.name} with filter: {filter_dict}")
                 return None
-            if updated_obj := await self.collection.find_one({"_id": ObjectId(id)}):
-                logger.info(f"Updated document in {self.collection.name} with id: {id}")
+            if updated_obj := await self.collection.find_one(filter=filter_dict):
+                logger.info(f"Updated document in {self.collection.name} with filter: {filter_dict}")
                 return self.model(**updated_obj)
             return None
         except Exception as e:
@@ -93,9 +97,9 @@ class MongoRepository(BaseRepository):
         """
         try:
             if doc := await self.collection.find_one(filter_dict):
-                logger.info(f"Found document in {self.collection.name} matching filter: {filter_dict}")
+                logger.info(f"Found document in {self.collection.name} matching filter: {str(filter_dict)}")
                 return self.model(**doc)
-            logger.warning(f"No document found in {self.collection.name} matching filter: {filter_dict}")
+            logger.warning(f"No document found in {self.collection.name} matching filter: {str(filter_dict)}")
             return None
         except Exception as e:
             logger.error(f"Error finding document in {self.collection.name}: {str(e)}")

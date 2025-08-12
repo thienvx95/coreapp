@@ -2,9 +2,9 @@ from datetime import datetime
 from typing import ClassVar, List, Optional, Annotated
 from pydantic import BaseModel, EmailStr, Field, StringConstraints, computed_field
 import hashlib
-from app.business.common.entities.base import MongoBaseModel
+from app.business.common.entities.base import BaseModel
 
-class User(MongoBaseModel):
+class User(BaseModel):
     """
     User model representing a system user.
     """

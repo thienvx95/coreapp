@@ -154,7 +154,7 @@ class MongoRepository(BaseRepository):
     async def insert_many(self, data: List[CreateSchemaType]):
         try:
             result = await self.collection.insert_many(data)
-            logger.info(f"Created new documents in {self.collection.name} with id: {result.inserted_id}")
+            logger.info(f"Created new documents in {self.collection.name} with id: {result.inserted_ids}")
         except Exception as e:
             logger.error(f"Error creating documents in {self.collection.name}: {str(e)}")
             raise

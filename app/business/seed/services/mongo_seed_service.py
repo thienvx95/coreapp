@@ -25,10 +25,10 @@ class MongoSeeder:
         try:
             for seed in self.models:
                 content = self.file_reader_service.read_file(seed.path)
-                object_data = json.load(content)
-                print(content)
+                object_data = json.loads(content)
+                print(content)  
             
-                repo = RepositoryFactory.get_repository(model=seed.model)
+                repo = RepositoryFactory().get_repository(model=seed.model)
                 await repo.insert_many(object_data)
             return True
         except Exception as e:

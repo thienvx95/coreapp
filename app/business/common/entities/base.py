@@ -1,8 +1,8 @@
 from datetime import datetime, UTC
-from typing import Any, Optional
+from typing import Any, Optional, Union
 from pydantic import BaseModel, Field
-
-from app.business.common.entities.pydantic_object_id import PydanticObjectId
+from pydantic.types import UUID4
+from uuid import uuid4
 
 class BaseModel(BaseModel):
     def __init__(self, **data: Any):
@@ -21,13 +21,13 @@ class BaseModel(BaseModel):
         self.updated_at = datetime.now(UTC)
         return self
         
-    id: Optional[PydanticObjectId] = Field(alias="_id", default=PydanticObjectId())
+    id: Optional[Union[UUID4, str]] = Field(alias="_id", default=uuid4())
     created_at: datetime = Field(None, description="Created at")
     updated_at: datetime = Field(None, description="Updated at")
     created_by: Optional[str] = Field(None, description="ID of user who created this record")
     updated_by: Optional[str] = Field(None, description="ID of user who last updated this record")
 
     class Config:
-        json_encoders = {PydanticObjectId: str}
+        json_encoders = {UUID4: str}
         populate_by_name = True
         arbitrary_types_allowed = True 

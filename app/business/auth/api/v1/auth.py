@@ -1,6 +1,6 @@
-from app.business.user.view_model.auth_viewmodel import LoginRequest
+from app.business.auth.view_model.auth_viewmodel import LoginRequest
 from fastapi import APIRouter, Depends, HTTPException, status
-from app.business.user.services.auth_service import AuthService
+from app.business.auth.services.auth_service import AuthService
 from app.business.user.entities.user import User
 from app.core.container import Container
 

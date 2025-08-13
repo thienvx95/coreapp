@@ -8,7 +8,7 @@ from app.business.permission.services.permission_service import PermissionServic
 from app.business.setting.services.setting_service import SettingService
 from app.business.common.services.file_reader.file_reader_service import FileReaderService
 from app.business.seed.services.mongo_seed_service import MongoSeeder
-from app.business.user.services.auth_service import AuthService
+from app.business.auth.services.auth_service import AuthService
 from app.core.data.db_factory import DBFactory
 from app.business.application_info.entities.application_info import ApplicationInfo
 from app.business.common.entities.migration_db.migration_db import MigrationDB

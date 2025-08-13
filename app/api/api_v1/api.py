@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from app.business.common.api.v1 import health
-from app.business.user.api.v1 import auth
+from app.business.auth.api.v1 import auth
 from app.business.roles.api.v1 import roles
 from app.business.menu.api.v1 import menu
 from app.business.permission.api.v1 import permission

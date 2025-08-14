@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class LoginRequest(BaseModel):
+class OAuth2PasswordRequestForm(BaseModel):
     """
     Login request model.
     """

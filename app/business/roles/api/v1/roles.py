@@ -2,7 +2,7 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
 from app.business.roles.services.role_service import RoleService
 from app.core.container import Container
-from app.business.roles.entities.role import Role
+from app.business.account.schema.role import Role
 from app.business.roles.view_model.role_viewmodel import RoleCreate, RoleUpdate
 
 router = APIRouter()

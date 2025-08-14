@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from app.business.roles.services.role_service import RoleService
 from app.business.user.services.user_service import UserService
 from app.business.user.view_model.user_viewmodel import UserCreate, UserUpdate
-from app.business.user.entities.user import User
+from app.business.account.schema.user import User
 from app.core.container import Container
 
 router = APIRouter()

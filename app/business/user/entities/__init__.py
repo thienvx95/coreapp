@@ -1,1 +1,1 @@
-from .user import User
+from ...account.schema.user import User

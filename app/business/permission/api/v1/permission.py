@@ -5,7 +5,7 @@ from app.business.menu.services.menu_service import MenuService
 from app.business.permission.view_model.permission_viewmodel import PermissionCreate, PermissionUpdate
 from app.business.roles.services.role_service import RoleService
 from app.core.container import Container
-from app.business.permission.entities.permission import Permission
+from app.business.permission.schema.permission import Permission
 
 router = APIRouter()
 

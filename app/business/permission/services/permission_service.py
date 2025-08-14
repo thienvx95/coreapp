@@ -1,5 +1,5 @@
 from app.business.common.services.base import BaseService
-from app.business.permission.entities.permission import Permission
+from app.business.permission.schema.permission import Permission
 from app.business.permission.view_model.permission_viewmodel import PermissionCreate, PermissionUpdate
 from typing import List, Optional
 

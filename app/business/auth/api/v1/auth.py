@@ -2,7 +2,7 @@ from app.business.auth.view_model import AuthToken
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi import APIRouter, Depends, HTTPException, status
 from app.business.auth.services.auth_service import AuthService
-from app.business.user.entities.user import User
+from app.business.account.schema.user import User
 from app.core.container import Container
 
 router = APIRouter()

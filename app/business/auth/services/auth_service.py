@@ -5,6 +5,7 @@ from app.business.user.services.user_service import UserService
 from app.core.utils.password import hash_password, verify_password
 from jose import JWTError, jwt
 from app.core.config import settings
+from app.business.auth.view_model import TokenData
 import uuid
 
 class AuthService:
@@ -31,18 +32,24 @@ class AuthService:
         if not verify_password(password, user.password):
             return None
         return user
-
-    def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
+    
+    def __create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
+        """
+        Create an access token for the user.
+        """
         to_encode = data.copy()
         if expires_delta:
             expire = datetime.now(UTC) + expires_delta
         else:
             expire = datetime.now(UTC) + timedelta(minutes=15)
-        to_encode.update({"exp": expire})
+        to_encode.update({"exp": expire, "type": "access"})
         encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
         return encoded_jwt
-    
-    def create_refresh_token(data: dict):
+
+    def __create_refresh_token(self, data: dict) -> str:
+        """
+        Create a refresh token for the user.
+        """
         to_encode = data.copy()
         expire = datetime.now(UTC) + timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS)
         jti = str(uuid.uuid4())  # Unique token ID
@@ -63,6 +70,46 @@ class AuthService:
         }
         
         return encoded_jwt
+     
+    def get_token_data(self, user: User) -> TokenData:
+        """
+        Get the token data for the user.
+        """
+        access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+        access_token = self.__create_access_token(
+            data={"sub": user.username}, expires_delta=access_token_expires
+        )
+        refresh_token = self.__create_refresh_token(
+            data={"sub": user.username}, expires_delta=access_token_expires
+        )
+        return TokenData(token=access_token, token_type="bearer")
+
+    async def store_refresh_token_mongo(
+        user_id: str, 
+        username: str, 
+        refresh_token: str,
+        device_info: Optional[str] = None,
+        ip_address: Optional[str] = None
+        ):
+        """Store refresh token in separate MongoDB collection"""
+        refresh_tokens_collection = get_refresh_tokens_collection()
+        expire_date = datetime.utcnow() + timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS)
+        
+        token_doc = {
+            "_id": str(uuid.uuid4()),
+            "token": refresh_token,
+            "user_id": user_id,
+            "username": username,
+            "device_info": device_info,
+            "ip_address": ip_address,
+            "expires_at": expire_date,
+            "created_at": datetime.utcnow(),
+            "last_used": None,
+            "is_active": True
+        }
+        
+        await refresh_tokens_collection.insert_one(token_doc)
+        return token_doc["_id"]
 
     def get_password_hash(self, password: str) -> str:
         """

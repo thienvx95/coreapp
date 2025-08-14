@@ -1,11 +1,9 @@
 from app.business.auth.view_model import AuthToken
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordRequestForm
 from fastapi import APIRouter, Depends, HTTPException, status
 from app.business.auth.services.auth_service import AuthService
 from app.business.user.entities.user import User
-from app.core.config import settings
 from app.core.container import Container
-from datetime import datetime, timedelta
 
 router = APIRouter()
 
@@ -30,9 +28,6 @@ async def login_for_access_token(
             detail="Incorrect username or password"
         )
     
-    access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
-    access_token = auth_service.create_access_token(
-        data={"sub": user.username}, expires_delta=access_token_expires
-    )
-    token = AuthToken(access_token=access_token, token_type="bearer")
+    token = await auth_service.get_token_data(user)
     return token 
+    

@@ -1,10 +1,11 @@
 from datetime import datetime, UTC
 from typing import Any, Optional, Union
-from pydantic import BaseModel, Field
 from pydantic.types import UUID4
-from uuid import uuid4
+from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import Mapped
+from sqlalchemy.orm import mapped_column
 
-class BaseModel(BaseModel):
+class BaseModel(DeclarativeBase):
     def __init__(self, **data: Any):
         super().__init__(**data)
         # Only set created_at during initial creation if it's not provided
@@ -21,11 +22,11 @@ class BaseModel(BaseModel):
         self.updated_at = datetime.now(UTC)
         return self
         
-    id: Optional[Union[UUID4, str]] = Field(alias="_id", default=uuid4())
-    created_at: datetime = Field(None, description="Created at")
-    updated_at: datetime = Field(None, description="Updated at")
-    created_by: Optional[str] = Field(None, description="ID of user who created this record")
-    updated_by: Optional[str] = Field(None, description="ID of user who last updated this record")
+    id: Mapped[Union[UUID4, str]] = mapped_column(primary_key=True)
+    created_at: Mapped[datetime]
+    updated_at: Mapped[datetime]
+    created_by: Mapped[Optional[str]] 
+    updated_by: Mapped[Optional[str]]
 
     class Config:
         json_encoders = {UUID4: str}

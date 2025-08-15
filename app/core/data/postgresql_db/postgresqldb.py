@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from app.core.config import Settings
 from sqlalchemy.orm import sessionmaker
 from app.core.data.base_db import BaseDatabaseProvider
-from app.business.common.entities.base import BaseModel
+from app.business.common.schema.base import BaseModel
 
 class PostGresqlDB(BaseDatabaseProvider):
     

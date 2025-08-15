@@ -19,6 +19,10 @@ class BaseDatabaseProvider(ABC):
         pass
 
     @abstractmethod
+    def create_table(self):
+        pass
+
+    @abstractmethod
     async def get_database_name(self) -> str:
         pass
 

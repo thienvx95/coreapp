@@ -20,7 +20,7 @@ async def lifespan(app: FastAPI):
     get_banner()
 
     # Initialize Db
-    await DBFactory().get_provider().connect()
+    DBFactory().get_provider().create_table()
     application_info_service: ApplicationInfoService = Container.application_info_service()
     await application_info_service.set_application_info()
     logger.info("Connected to MongoDB and initialized repositories")

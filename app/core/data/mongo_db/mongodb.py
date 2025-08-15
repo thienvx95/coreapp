@@ -24,7 +24,10 @@ class MongoDB(BaseDatabaseProvider):
 
     async def get_database_name(self) -> str:
         return settings.DATABASE_NAME
-
+    
+    def create_table(self):
+        return super().create_table()
+    
     async def get_database_version(self) -> str:
         server_info = await self.db.server_info()
         return server_info["version"]

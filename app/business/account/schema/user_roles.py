@@ -11,8 +11,8 @@ class UserRole(BaseModel):
     role_id = Column(UUID(as_uuid=True), ForeignKey('roles.id'), nullable=False)
 
     # Relationships
-    user = relationship('User', foreign_keys=[user_id])
-    role = relationship('Role', foreign_keys=[role_id])
+    user = relationship('User', foreign_keys=[user_id], overlaps="roles,users")
+    role = relationship('Role', foreign_keys=[role_id], overlaps="roles,users")
 
     def __repr__(self):
         return f'<UserRole user_id={self.user_id} role_id={self.role_id}>'

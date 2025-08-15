@@ -1,13 +1,15 @@
-from sqlalchemy import create_engine
-from app.core.config import Settings
+from sqlalchemy import Engine, create_engine
+from app.core.config import settings
 from sqlalchemy.orm import sessionmaker
 from app.core.data.base_db import BaseDatabaseProvider
 from app.business.common.schema.base import BaseModel
 
 class PostGresqlDB(BaseDatabaseProvider):
-    
+    engine: Engine = None
+    SessionLocal: sessionmaker = None
+
     def __init__(self):
-        pass
+        super().__init__()
 
     async def connect(self):
         self.get_database().connection()
@@ -20,7 +22,7 @@ class PostGresqlDB(BaseDatabaseProvider):
     
     def __get_engine(self):
         if self.engine is None:
-            self.engine = create_engine(f"{Settings.DATABASE_URL}/{Settings.DATABASE_NAME}")
+            self.engine = create_engine(f"{settings.DATABASE_URL}/{settings.DATABASE_NAME}")
         return self.engine
     
     def create_table(self):
@@ -28,11 +30,11 @@ class PostGresqlDB(BaseDatabaseProvider):
 
     def get_database(self):
         if self.SessionLocal is None:
-            self.SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=self.get_engine())
+            self.SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=self.__get_engine())
         return self.SessionLocal()
     
     async def get_database_name(self) -> str:
-        return Settings.DATABASE_NAME
+        return settings.DATABASE_NAME
 
     async def get_database_version(self) -> str:
-        pass
+        return self.engine.execute("SELECT version()").scalar()

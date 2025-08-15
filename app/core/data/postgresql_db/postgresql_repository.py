@@ -1,6 +1,8 @@
 
 
 from typing import Any, Dict, List, Type
+from app.business.common.model.pagingation.pagination_request import PaginationRequest
+from app.business.common.model.pagingation.pagination_response import PaginationResponse
 from app.core.data.base_repository import BaseRepository
 from app.core.data.model_type import CreateSchemaType, ModelType, UpdateSchemaType
 from sqlalchemy.orm import Session
@@ -190,7 +192,7 @@ class PostgreSqlRepository(BaseRepository):
             Found data.
         """
         try:
-            return self.db.query(self.model).filter_by(**filter_dict).all()
+            return self.db.query(self.model).filter_by(**filter_dict).first()
         except Exception as e:
             logger.error(f"Error finding one data: {e}")
             raise e
@@ -212,3 +214,38 @@ class PostgreSqlRepository(BaseRepository):
             raise e
         finally:
             self.db.close()
+    
+    async def find_by_id(self, _id: str) -> ModelType:
+        """
+        Find one data from the database by id.
+        Args:
+            _id: ID of the data to find.
+        Returns:
+            Found data.
+        """
+        try:    
+            return self.db.query(self.model).filter_by(id=_id).first()
+        except Exception as e:
+            logger.error(f"Error finding one data by id: {e}")
+            raise e
+        finally:
+            self.db.close()
+
+    async def find_paging(self, request: PaginationRequest) -> PaginationResponse:
+        """
+        Find paging data from the database.
+        Args:
+            request: Pagination request.
+        Returns:
+            Pagination response.
+        """
+        try:
+            return self.db.query(self.model).filter_by(**request.filter_dict).offset((request.page - 1) * request.limit).limit(request.limit).all()
+        except Exception as e:
+            logger.error(f"Error finding paging data: {e}")
+            raise e
+        finally:
+            self.db.close()
+
+
+        

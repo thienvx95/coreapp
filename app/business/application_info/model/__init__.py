@@ -1,0 +1,1 @@
+from .application_viewmodel import ApplicationInfoViewModel

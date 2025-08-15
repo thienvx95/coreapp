@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from app.business.account.service.role_service import RoleService
 from app.core.container import Container
 from app.business.account.schema.role import Role
-from app.business.account.model.role_viewmodel import RoleCreate, RoleUpdate
+from app.business.account.model.role_viewmodel import RoleCreate, RoleUpdate, RoleViewModel
 
 router = APIRouter()
 
@@ -13,7 +13,7 @@ def get_role_service() -> RoleService:
     """
     return Container.role_service()
 
-@router.post("/", response_model=Role, status_code=status.HTTP_201_CREATED)
+@router.post("/", response_model=RoleViewModel, status_code=status.HTTP_201_CREATED)
 async def create_role(
     role_in: RoleCreate,
     role_service: RoleService = Depends(get_role_service)
@@ -30,7 +30,7 @@ async def create_role(
     
     return await role_service.create(role_in)
 
-@router.get("/", response_model=List[Role])
+@router.get("/", response_model=List[RoleViewModel])
 async def list_roles(
     skip: int = 0,
     limit: int = 10,
@@ -41,7 +41,7 @@ async def list_roles(
     """
     return await role_service.list(skip=skip, limit=limit)
 
-@router.get("/{role_id}", response_model=Role)
+@router.get("/{role_id}", response_model=RoleViewModel)
 async def get_role(
     role_id: str,
     role_service: RoleService = Depends(get_role_service)
@@ -56,7 +56,7 @@ async def get_role(
         detail="Role not found"
     )
 
-@router.put("/{role_id}", response_model=Role)
+@router.put("/{role_id}", response_model=RoleViewModel)
 async def update_role(
     role_id: str,
     role_in: RoleUpdate,

@@ -1,6 +1,6 @@
 from app.business.common.services.base import BaseService
 from app.business.permission.schema.permission import Permission
-from app.business.permission.model.permission_viewmodel import PermissionCreate, PermissionUpdate
+from app.business.permission.model import PermissionCreate, PermissionUpdate, PermissionViewModel
 from typing import List, Optional
 
 
@@ -8,7 +8,7 @@ class PermissionService(BaseService[Permission, PermissionCreate, PermissionUpda
     """
     Service for permission operations.
     """
-    async def get_by_function_and_role(self, function_id: str, role_id: str) -> Optional[Permission]:
+    async def get_by_function_and_role(self, function_id: str, role_id: str) -> Optional[PermissionViewModel]:
         """
         Get a permission by function ID and role ID.
         

@@ -1,18 +1,30 @@
 from typing import Optional
 from pydantic import BaseModel, Field
 
+class PermissionViewModel(BaseModel):
+    """
+    Permission view model.
+    """
+    function_id: str = Field(..., description="The function id")
+    role_id: str = Field(..., description="The role id")
+    create: bool = Field(..., description="Whether the user can create")
+    delete: bool = Field(..., description="Whether the user can delete")
+    change: bool = Field(..., description="Whether the user can change")
+    read: bool = Field(..., description="Whether the user can read")
+    administer: bool = Field(..., description="Whether the user can administer")
+    is_active: bool = Field(..., description="Whether the permission is active")
 class PermissionCreate(BaseModel):
     """
     Permission creation request model.
     """
-    function_id: str
-    role_id: str
-    create: bool = False
-    delete: bool = False
-    change: bool = False
-    read: bool = False
-    administer: bool = False
-    is_active: bool = True
+    function_id: str = Field(..., description="The function id")
+    role_id: str = Field(..., description="The role id")
+    create: bool = Field(..., description="Whether the user can create")
+    delete: bool = Field(..., description="Whether the user can delete")
+    change: bool = Field(..., description="Whether the user can change")
+    read: bool = Field(..., description="Whether the user can read")
+    administer: bool = Field(..., description="Whether the user can administer")
+    is_active: bool = Field(..., description="Whether the permission is active")
 
     class Config:
         json_schema_extra = {
@@ -32,14 +44,14 @@ class PermissionUpdate(BaseModel):
     """
     Permission update request model.
     """
-    function_id: Optional[str] = None
-    role_id: Optional[str] = None
-    create: Optional[bool] = None
-    delete: Optional[bool] = None
-    change: Optional[bool] = None
-    read: Optional[bool] = None
-    administer: Optional[bool] = None
-    is_active: Optional[bool] = None
+    function_id: Optional[str] = Field(..., description="The function id")
+    role_id: Optional[str] = Field(..., description="The role id")
+    create: Optional[bool] = Field(..., description="Whether the user can create")
+    delete: Optional[bool] = Field(..., description="Whether the user can delete")
+    change: Optional[bool] = Field(..., description="Whether the user can change")
+    read: Optional[bool] = Field(..., description="Whether the user can read")
+    administer: Optional[bool] = Field(..., description="Whether the user can administer")
+    is_active: Optional[bool] = Field(..., description="Whether the permission is active")
 
     class Config:
         json_schema_extra = {

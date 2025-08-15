@@ -1,8 +1,8 @@
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from app.business.setting.services.setting_service import SettingService
-from app.business.setting.view_model.setting_viewmodel import SettingCreate, SettingUpdate
-from app.business.setting.entities.setting import Setting
+from app.business.setting.model import SettingCreate, SettingUpdate, SettingViewModel
+from app.business.setting.schema import Setting
 from app.core.container import Container
 
 router = APIRouter()
@@ -13,11 +13,11 @@ def get_setting_service() -> SettingService:
     """
     return Container.setting_service()
 
-@router.post("/", response_model=Setting, status_code=status.HTTP_201_CREATED)
+@router.post("/", response_model=SettingViewModel, status_code=status.HTTP_201_CREATED)
 async def create_setting(
     setting_in: SettingCreate,
     setting_service: SettingService = Depends(get_setting_service)
-) -> Setting:
+) -> SettingViewModel:
     """
     Create a new setting.
     """
@@ -30,62 +30,62 @@ async def create_setting(
     
     return await setting_service.create(setting_in)
 
-@router.get("/", response_model=List[Setting])
+@router.get("/", response_model=List[SettingViewModel])
 async def list_settings(
     skip: int = 0,
     limit: int = 10,
     setting_service: SettingService = Depends(get_setting_service)
-) -> List[Setting]:
+) -> List[SettingViewModel]:
     """
     List settings with pagination.
     """
     return await setting_service.list(skip=skip, limit=limit)
 
-@router.get("/public", response_model=List[Setting])
+@router.get("/public", response_model=List[SettingViewModel])
 async def get_public_settings(
     setting_service: SettingService = Depends(get_setting_service)
-) -> List[Setting]:
+) -> List[SettingViewModel]:
     """
     Get all public settings.
     """
     return await setting_service.get_public_settings()
 
-@router.get("/group/{group}", response_model=List[Setting])
+@router.get("/group/{group}", response_model=List[SettingViewModel])
 async def get_settings_by_group(
     group: str,
     setting_service: SettingService = Depends(get_setting_service)
-) -> List[Setting]:
+) -> List[SettingViewModel]:
     """
     Get all settings in a specific group.
     """
     return await setting_service.get_by_group(group)
 
-@router.get("/section/{section}", response_model=List[Setting])
+@router.get("/section/{section}", response_model=List[SettingViewModel])
 async def get_settings_by_section(
     section: str,
     setting_service: SettingService = Depends(get_setting_service)
-) -> List[Setting]:
+) -> List[SettingViewModel]:
     """
     Get all settings in a specific section.
     """
     return await setting_service.get_by_section(section)
 
-@router.get("/group/{group}/section/{section}", response_model=List[Setting])
+@router.get("/group/{group}/section/{section}", response_model=List[SettingViewModel])
 async def get_settings_by_group_and_section(
     group: str,
     section: str,
     setting_service: SettingService = Depends(get_setting_service)
-) -> List[Setting]:
+) -> List[SettingViewModel]:
     """
     Get all settings in a specific group and section.
     """
     return await setting_service.get_by_group_and_section(group, section)
 
-@router.get("/{setting_id}", response_model=Setting)
+@router.get("/{setting_id}", response_model=SettingViewModel)
 async def get_setting(
     setting_id: str,
     setting_service: SettingService = Depends(get_setting_service)
-) -> Setting:
+) -> SettingViewModel:
     """
     Get a setting by ID.
     """
@@ -96,11 +96,11 @@ async def get_setting(
         detail="Setting not found"
     )
 
-@router.get("/name/{name}", response_model=Setting)
+@router.get("/name/{name}", response_model=SettingViewModel)
 async def get_setting_by_name(
     name: str,
     setting_service: SettingService = Depends(get_setting_service)
-) -> Setting:
+) -> SettingViewModel:
     """
     Get a setting by name.
     """
@@ -111,12 +111,12 @@ async def get_setting_by_name(
         detail="Setting not found"
     )
 
-@router.put("/{setting_id}", response_model=Setting)
+@router.put("/{setting_id}", response_model=SettingViewModel)
 async def update_setting(
     setting_id: str,
     setting_in: SettingUpdate,
     setting_service: SettingService = Depends(get_setting_service)
-) -> Setting:
+) -> SettingViewModel:
     """
     Update a setting.
     """

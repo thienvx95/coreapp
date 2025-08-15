@@ -1,3 +1,4 @@
+from typing import Annotated
 from app.business.auth.model import AuthToken
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -15,7 +16,7 @@ def get_auth_service() -> AuthService:
 
 @router.post("/token", response_model=AuthToken)
 async def login_for_access_token(
-    form_data: OAuth2PasswordRequestForm ,
+    form_data: Annotated[OAuth2PasswordRequestForm, Depends()] ,
     auth_service: AuthService = Depends(get_auth_service)
 ) -> User:
     """

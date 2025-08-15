@@ -2,7 +2,7 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
 from app.business.account.service.role_service import RoleService
 from app.business.account.service.user_service import UserService
-from app.business.account.model.user_viewmodel import UserCreate, UserUpdate
+from app.business.account.model.user_viewmodel import UserCreate, UserUpdate, UserViewModel
 from app.business.account.schema.user import User
 from app.core.container import Container
 
@@ -20,11 +20,11 @@ def get_role_service() -> RoleService:
     """
     return Container.role_service()
 
-@router.post("/", response_model=User, status_code=status.HTTP_201_CREATED)
+@router.post("/", response_model=UserViewModel, status_code=status.HTTP_201_CREATED)
 async def create_user(
     user_in: UserCreate,
     user_service: UserService = Depends(get_user_service)
-) -> User:
+) -> UserViewModel:
     """
     Create a new user.
     """
@@ -44,22 +44,22 @@ async def create_user(
 
     return await user_service.create(user_in)
 
-@router.get("/", response_model=List[User])
+@router.get("/", response_model=List[UserViewModel])
 async def list_users(
     skip: int = 0,
     limit: int = 10,
     user_service: UserService = Depends(get_user_service)
-) -> List[User]:
+) -> List[UserViewModel]:
     """
     List users with pagination.
     """
     return await user_service.list(skip=skip, limit=limit)
 
-@router.get("/{user_id}", response_model=User)
+@router.get("/{user_id}", response_model=UserViewModel)
 async def get_user(
     user_id: str,
     user_service: UserService = Depends(get_user_service)
-) -> User:
+) -> UserViewModel:
     """
     Get a user by ID.
     """
@@ -70,12 +70,12 @@ async def get_user(
         detail="User not found"
     )
 
-@router.put("/{user_id}", response_model=User)
+@router.put("/{user_id}", response_model=UserViewModel)
 async def update_user(
     user_id: str,
     user_in: UserUpdate,
     user_service: UserService = Depends(get_user_service)
-) -> User:
+) -> UserViewModel:
     """
     Update a user.
     """
@@ -115,13 +115,13 @@ async def get_user_roles(
         detail="User not found"
     )
 
-@router.post("/{user_id}/roles/{role_name}", response_model=User)
+@router.post("/{user_id}/roles/{role_name}", response_model=UserViewModel)
 async def add_role_to_user(
     user_id: str,
     role_name: str,
     user_service: UserService = Depends(get_user_service),
     role_service: RoleService = Depends(get_role_service)
-) -> User:
+) -> UserViewModel:
     """
     Add a role to a user.
     """
@@ -141,13 +141,13 @@ async def add_role_to_user(
         detail="User not found"
     )
 
-@router.delete("/{user_id}/roles/{role_name}", response_model=User)
+@router.delete("/{user_id}/roles/{role_name}", response_model=UserViewModel     )
 async def remove_role_from_user(
     user_id: str,
     role_name: str,
     user_service: UserService = Depends(get_user_service),
     role_service: RoleService = Depends(get_role_service)
-) -> User:
+) -> UserViewModel:
     """
     Remove a role from a user.
     """

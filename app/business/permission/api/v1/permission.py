@@ -2,7 +2,7 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
 from app.business.permission.services.permission_service import PermissionService
 from app.business.menu.services.menu_service import MenuService
-from app.business.permission.view_model.permission_viewmodel import PermissionCreate, PermissionUpdate
+from app.business.permission.model import PermissionCreate, PermissionUpdate, PermissionViewModel
 from app.business.account.service.role_service import RoleService
 from app.core.container import Container
 from app.business.permission.schema.permission import Permission
@@ -27,13 +27,13 @@ def get_role_service() -> RoleService:
     """
     return Container.role_service()
 
-@router.post("/", response_model=Permission, status_code=status.HTTP_201_CREATED)
+@router.post("/", response_model=PermissionViewModel, status_code=status.HTTP_201_CREATED)
 async def create_permission(
     permission_in: PermissionCreate,
     permission_service: PermissionService = Depends(get_permission_service),
     menu_service: MenuService = Depends(get_menu_service),
     role_service: RoleService = Depends(get_role_service)
-) -> Permission:
+) -> PermissionViewModel:
     """
     Create a new permission.
     """
@@ -60,23 +60,23 @@ async def create_permission(
     
     return await permission_service.create(permission_in)
 
-@router.get("/", response_model=List[Permission])
+@router.get("/", response_model=List[PermissionViewModel])
 async def list_permissions(
     skip: int = 0,
     limit: int = 10,
     permission_service: PermissionService = Depends(get_permission_service)
-) -> List[Permission]:
+) -> List[PermissionViewModel]:
     """
     List permissions with pagination.
     """
     return await permission_service.list(skip=skip, limit=limit)
 
-@router.get("/function/{function_id}", response_model=List[Permission])
+@router.get("/function/{function_id}", response_model=List[PermissionViewModel])
 async def get_permissions_by_function(
     function_id: str,
     permission_service: PermissionService = Depends(get_permission_service),
     menu_service: MenuService = Depends(get_menu_service)
-) -> List[Permission]:
+) -> List[PermissionViewModel]:
     """
     Get all permissions for a specific function (menu item).
     """
@@ -89,12 +89,12 @@ async def get_permissions_by_function(
     
     return await permission_service.get_by_function(function_id)
 
-@router.get("/role/{role_id}", response_model=List[Permission])
+@router.get("/role/{role_id}", response_model=List[PermissionViewModel])
 async def get_permissions_by_role(
     role_id: str,
     permission_service: PermissionService = Depends(get_permission_service),
     role_service: RoleService = Depends(get_role_service)
-) -> List[Permission]:
+) -> List[PermissionViewModel]:
     """
     Get all permissions for a specific role.
     """
@@ -107,11 +107,11 @@ async def get_permissions_by_role(
     
     return await permission_service.get_by_role(role_id)
 
-@router.get("/{permission_id}", response_model=Permission)
+@router.get("/{permission_id}", response_model=PermissionViewModel)
 async def get_permission(
     permission_id: str,
     permission_service: PermissionService = Depends(get_permission_service)
-) -> Permission:
+) -> PermissionViewModel:
     """
     Get a permission by ID.
     """
@@ -122,14 +122,14 @@ async def get_permission(
         detail="Permission not found"
     )
 
-@router.put("/{permission_id}", response_model=Permission)
+@router.put("/{permission_id}", response_model=PermissionViewModel)
 async def update_permission(
     permission_id: str,
     permission_in: PermissionUpdate,
     permission_service: PermissionService = Depends(get_permission_service),
     menu_service: MenuService = Depends(get_menu_service),
     role_service: RoleService = Depends(get_role_service)
-) -> Permission:
+) -> PermissionViewModel:
     """
     Update a permission.
     """

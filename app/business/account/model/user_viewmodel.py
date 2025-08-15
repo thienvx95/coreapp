@@ -1,6 +1,19 @@
 from typing import List, Optional, Annotated
 from pydantic import BaseModel, EmailStr, Field, StringConstraints
 
+class UserViewModel(BaseModel):
+    """
+    User view model.
+    """
+    id: str = Field(..., description="The id of the user")
+    email: EmailStr = Field(..., description="The email of the user")
+    username: str = Field(..., description="The username of the user")
+    first_name: str = Field(..., description="The first name of the user")
+    last_name: str = Field(..., description="The last name of the user")
+    language: str = Field(..., description="The language of the user")
+    roles: List[str] = Field(..., description="The roles of the user")
+    is_active: bool = Field(..., description="Whether the user is active")
+
 class UserCreate(BaseModel):
     """
     User creation request model.

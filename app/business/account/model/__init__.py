@@ -1,2 +1,2 @@
-from .role_viewmodel import RoleCreate, RoleUpdate
-from .user_viewmodel import UserCreate, UserUpdate
+from .role_viewmodel import RoleCreate, RoleUpdate, RoleViewModel
+from .user_viewmodel import UserCreate, UserUpdate, UserViewModel

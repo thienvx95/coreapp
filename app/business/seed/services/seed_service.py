@@ -3,14 +3,14 @@ from typing import List
 
 from app.business.menu.schema import Menu
 from app.business.account.schema.role import Role
-from app.business.seed.view_model.model_seed import ModelSeed
+from app.business.seed.model import ModelSeed
 from app.business.setting.schema import Setting
 from app.business.account.schema.user import User
 from app.core.logging import logger 
 from app.core.data.repository_factory import RepositoryFactory
 from app.business.common.services.file_reader.file_reader_service import FileReaderService
 
-class MongoSeeder:
+class SeederService:
     models: List[ModelSeed] = [
         ModelSeed(User, "./seed/1.users/user.json"),
         ModelSeed(Role, "./seed/2.roles/role.json"),

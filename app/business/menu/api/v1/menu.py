@@ -1,8 +1,8 @@
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
-from app.business.menu.entities.menu import Menu
+from app.business.menu.schema import Menu
 from app.business.menu.services.menu_service import MenuService
-from app.business.menu.view_model.menu_viewmodel import MenuCreate, MenuUpdate
+from app.business.menu.model import MenuCreate, MenuUpdate, MenuViewModel
 from app.business.account.service.role_service import RoleService
 from app.core.container import Container
 
@@ -20,7 +20,7 @@ def get_role_service() -> RoleService:
     """
     return Container.role_service()
 
-@router.post("/", response_model=Menu, status_code=status.HTTP_201_CREATED)
+@router.post("/", response_model=MenuViewModel, status_code=status.HTTP_201_CREATED)
 async def create_menu(
     menu_in: MenuCreate,
     menu_service: MenuService = Depends(get_menu_service)
@@ -37,27 +37,27 @@ async def create_menu(
 
     return await menu_service.create(menu_in)
 
-@router.get("/", response_model=List[Menu])
+@router.get("/", response_model=List[MenuViewModel])
 async def list_menus(
     skip: int = 0,
     limit: int = 100,
     menu_service: MenuService = Depends(get_menu_service)
-) -> List[Menu]:
+) -> List[MenuViewModel]:
     """
     List menu items with pagination.
     """
     return await menu_service.list(skip=skip, limit=limit)
 
-@router.get("/root", response_model=List[Menu])
+@router.get("/root", response_model=List[MenuViewModel])
 async def get_root_menus(
     menu_service: MenuService = Depends(get_menu_service)
-) -> List[Menu]:
+) -> List[MenuViewModel]:
     """
     Get all root menu items (items without a parent).
     """
     return await menu_service.get_root_menus()
 
-@router.get("/{menu_id}", response_model=Menu)
+@router.get("/{menu_id}", response_model=MenuViewModel)
 async def get_menu(
     menu_id: str,
     menu_service: MenuService = Depends(get_menu_service)
@@ -72,11 +72,11 @@ async def get_menu(
         detail="Menu item not found"
     )
 
-@router.get("/{menu_id}/children", response_model=List[Menu])
+@router.get("/{menu_id}/children", response_model=List[MenuViewModel])
 async def get_menu_children(
     menu_id: str,
     menu_service: MenuService = Depends(get_menu_service)
-) -> List[Menu]:
+) -> List[MenuViewModel]:
     """
     Get all children of a menu item.
     """
@@ -87,7 +87,7 @@ async def get_menu_children(
         )
     return await menu_service.get_by_parent_id(menu_id)
 
-@router.put("/{menu_id}", response_model=Menu)
+@router.put("/{menu_id}", response_model=MenuViewModel)
 async def update_menu(
     menu_id: str,
     menu_in: MenuUpdate,
@@ -117,12 +117,12 @@ async def delete_menu(
             detail="Menu item not found"
         )
 
-@router.get("/role/{role_id}", response_model=List[Menu])
+@router.get("/role/{role_id}", response_model=List[MenuViewModel])
 async def get_menus_by_role(
     role_id: str,
     menu_service: MenuService = Depends(get_menu_service),
     role_service: RoleService = Depends(get_role_service)
-) -> List[Menu]:
+) -> List[MenuViewModel]:
     """
     Get all menu items accessible by a specific role.
     """

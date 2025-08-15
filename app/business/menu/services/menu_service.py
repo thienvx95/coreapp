@@ -1,4 +1,4 @@
-from app.business.menu.model.menu_viewmodel import MenuCreate, MenuUpdate
+from app.business.menu.model.menu_viewmodel import MenuCreate, MenuUpdate, MenuViewModel
 from app.business.common.services.base import BaseService
 from app.business.menu.schema.menu import Menu
 from typing import List
@@ -26,7 +26,7 @@ class MenuService(BaseService[Menu, MenuCreate, MenuUpdate]):
         """
         return await self.repository.find_one({"path": path})
 
-    async def get_by_parent_id(self, parent_id: str) -> List[Menu]:
+    async def get_by_parent_id(self, parent_id: str) -> List[MenuViewModel]:
         """
         Get all menu items with the specified parent ID.
 
@@ -38,7 +38,7 @@ class MenuService(BaseService[Menu, MenuCreate, MenuUpdate]):
         """
         return await self.repository.list(filter_dict={"parentId": parent_id})
 
-    async def get_root_menus(self) -> List[Menu]:
+    async def get_root_menus(self) -> List[MenuViewModel]:
         """
         Get all root menu items (items without a parent).
 
@@ -47,7 +47,7 @@ class MenuService(BaseService[Menu, MenuCreate, MenuUpdate]):
         """
         return await self.repository.list(filter_dict={"parentId": None})
 
-    async def get_menus_by_role(self, role_id: str) -> List[Menu]:
+    async def get_menus_by_role(self, role_id: str) -> List[MenuViewModel]:
         """
         Get all menu items accessible by a specific role.
 

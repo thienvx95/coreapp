@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 
-from app.business.application_info.entities import ApplicationInfo
+from app.business.application_info.model import ApplicationInfoViewModel
 from app.business.application_info.services import ApplicationInfoService
 from app.core.container import Container
 
@@ -13,8 +13,8 @@ def get_application_info_service() -> ApplicationInfoService:
     return Container.application_info_service()
 
 
-@router.get("/application-info", response_model=ApplicationInfo)
-async def application_info(application_info_service: ApplicationInfoService = Depends(get_application_info_service)) -> ApplicationInfo:
+@router.get("/application-info", response_model=ApplicationInfoViewModel)
+async def application_info(application_info_service: ApplicationInfoService = Depends(get_application_info_service)) -> ApplicationInfoViewModel:
     info = await application_info_service.get_application_info()
     if info is None:
         # If the service returns None, it means the application info was not found.

@@ -1,6 +1,14 @@
 from typing import Optional, Annotated
 from pydantic import BaseModel, Field, StringConstraints
 
+class RoleViewModel(BaseModel):
+    """
+    Role view model.
+    """
+    name: str = Field(..., description="The name of the role", min_length=2, max_length=50)
+    description: Optional[str] = Field(None, description="The description of the role")
+    is_active: bool = Field(..., description="Whether the role is active")
+    
 class RoleCreate(BaseModel):
     """
     Role creation request model.

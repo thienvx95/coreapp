@@ -1,15 +1,31 @@
 from typing import List, Optional, Union
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 # Define a type for setting values
 SettingValue = Union[bool, str, int, List[str], None]
+
+class SettingViewModel(BaseModel):
+    """
+    Setting view model.
+    """
+    id: str = Field(..., description="The id of the setting")
+    name: str = Field(..., description="The name of the setting")
+    value: SettingValue = Field(..., description="The value of the setting")
+    type: str = Field(..., description="The type of the setting")
+    public: bool = Field(..., description="Whether the setting is public")
+    group: Optional[str] = Field(..., description="The group of the setting")
+    section: Optional[str] = Field(..., description="The section of the setting")
+    sorter: Optional[int] = Field(..., description="The sorter of the setting")
+    hidden: bool = Field(..., description="Whether the setting is hidden")
+    description: Optional[str] = Field(..., description="The description of the setting")
+    values: Optional[str] = Field(..., description="The values of the setting")
 
 class SettingSelectOptionCreate(BaseModel):
     """
     Setting select option creation request model.
     """
-    value: str
-    label: str
+    value: str = Field(..., description="The value of the setting select option")
+    label: str = Field(..., description="The label of the setting select option")
 
     class Config:
         json_schema_extra = {
@@ -23,8 +39,8 @@ class SettingSelectOptionUpdate(BaseModel):
     """
     Setting select option update request model.
     """
-    value: Optional[str] = None
-    label: Optional[str] = None
+    value: Optional[str] = Field(..., description="The value of the setting select option")
+    label: Optional[str] = Field(..., description="The label of the setting select option")
 
     class Config:
         json_schema_extra = {
@@ -38,16 +54,16 @@ class SettingCreate(BaseModel):
     """
     Setting creation request model.
     """
-    type: str
-    public: bool = False
-    group: Optional[str] = None
-    section: Optional[str] = None
-    name: str
-    value: Optional[SettingValue] = None
-    sorter: Optional[int] = None
-    hidden: bool = False
-    description: Optional[str] = None
-    values: Optional[List[SettingSelectOptionCreate]] = None
+    type: str = Field(..., description="The type of the setting")
+    public: bool = Field(..., description="Whether the setting is public")
+    group: Optional[str] = Field(..., description="The group of the setting")
+    section: Optional[str] = Field(..., description="The section of the setting")
+    name: str = Field(..., description="The name of the setting")
+    value: Optional[SettingValue] = Field(..., description="The value of the setting")
+    sorter: Optional[int] = Field(..., description="The sorter of the setting")
+    hidden: bool = Field(..., description="Whether the setting is hidden")
+    description: Optional[str] = Field(..., description="The description of the setting")
+    values: Optional[List[SettingSelectOptionCreate]] = Field(..., description="The values of the setting")
 
     class Config:
         json_schema_extra = {
@@ -68,17 +84,17 @@ class SettingUpdate(BaseModel):
     """
     Setting update request model.
     """
-    type: Optional[str] = None
-    public: Optional[bool] = None
-    group: Optional[str] = None
-    section: Optional[str] = None
-    name: Optional[str] = None
-    value: Optional[SettingValue] = None
-    sorter: Optional[int] = None
-    hidden: Optional[bool] = None
-    description: Optional[str] = None
-    values: Optional[List[SettingSelectOptionUpdate]] = None
-    updated_by: Optional[str] = None
+    type: Optional[str] = Field(..., description="The type of the setting")
+    public: Optional[bool] = Field(..., description="Whether the setting is public")
+    group: Optional[str] = Field(..., description="The group of the setting")
+    section: Optional[str] = Field(..., description="The section of the setting")
+    name: Optional[str] = Field(..., description="The name of the setting")
+    value: Optional[SettingValue] = Field(..., description="The value of the setting")
+    sorter: Optional[int] = Field(..., description="The sorter of the setting")
+    hidden: Optional[bool] = Field(..., description="Whether the setting is hidden")
+    description: Optional[str] = Field(..., description="The description of the setting")
+    values: Optional[List[SettingSelectOptionUpdate]] = Field(..., description="The values of the setting")
+    updated_by: Optional[str] = Field(..., description="The updated by of the setting")
 
     class Config:
         json_schema_extra = {

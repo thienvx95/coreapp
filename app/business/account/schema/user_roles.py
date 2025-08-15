@@ -2,7 +2,7 @@ from sqlalchemy import Column, ForeignKey, UUID
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.business.account.schema.user import User
-from app.business.common.entities.base import BaseModel
+from app.business.common.schema.base import BaseModel
 
 class UserRole(BaseModel):
     __tablename__ = 'userRoles'

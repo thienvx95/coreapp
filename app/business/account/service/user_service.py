@@ -1,5 +1,5 @@
 from app.business.common.services.base import BaseService
-from app.business.user.entities import User
+from app.business.account.schema import User
 from app.business.account.model.user_viewmodel import UserCreate, UserUpdate
 from app.core.utils.password import hash_password
 

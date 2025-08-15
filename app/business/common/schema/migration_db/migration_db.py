@@ -1,5 +1,5 @@
 from sqlalchemy import Column, DateTime, String
-from app.business.common.entities.base import BaseModel
+from app.business.common.schema.base import BaseModel
 
 class MigrationDB(BaseModel):
     __tablename__ = "migrationDbs"

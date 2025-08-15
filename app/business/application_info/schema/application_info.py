@@ -2,7 +2,7 @@ from typing import ClassVar
 from pydantic import Field
 from sqlalchemy import Column, String
 
-from app.business.common.entities.base import BaseModel
+from app.business.common.schema.base import BaseModel
 
 class ApplicationInfo(BaseModel):
     __tablename__ = "application_info"

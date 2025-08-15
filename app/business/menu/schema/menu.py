@@ -1,5 +1,5 @@
 from sqlalchemy import Boolean, Column, Integer, String
-from app.business.common.entities.base import BaseModel
+from app.business.common.schema.base import BaseModel
 
 class Menu(BaseModel):
     """

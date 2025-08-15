@@ -1,7 +1,7 @@
 import datetime
 from typing import ClassVar, Optional, Annotated
 from pydantic import Field, StringConstraints
-from app.business.common.entities.base import BaseModel
+from app.business.common.schema.base import BaseModel
 
 class RefreshToken(BaseModel):
     """

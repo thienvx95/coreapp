@@ -1,4 +1,4 @@
-from app.business.common.entities.base import BaseModel
+from app.business.common.schema.base import BaseModel
 from sqlalchemy import Column, String, ForeignKey, UUID
 from sqlalchemy.orm import relationship
 

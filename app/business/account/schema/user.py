@@ -1,7 +1,7 @@
 
 from sqlalchemy import Boolean, Column, DateTime, String
 import hashlib
-from app.business.common.entities.base import BaseModel
+from app.business.common.schema.base import BaseModel
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship
 

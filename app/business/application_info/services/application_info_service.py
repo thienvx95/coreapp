@@ -2,8 +2,8 @@ from app.core.logging import logger
 from app.core.config import settings
 from app.core.constants import Application_Version
 from app.core.data import DBFactory
-from app.business.application_info.entities.application_info import ApplicationInfo
-from app.business.common.entities.migration_db.migration_db import MigrationDB
+from app.business.application_info.schema import ApplicationInfo
+from app.business.common.schema import MigrationDB
 from app.core.data.repository_factory import RepositoryFactory
 
 class ApplicationInfoService:

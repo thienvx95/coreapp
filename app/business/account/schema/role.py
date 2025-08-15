@@ -1,8 +1,4 @@
-from tokenize import String
-from typing import ClassVar, Optional, Annotated
-from xmlrpc.client import Boolean
-from pydantic import Field, StringConstraints
-from sqlalchemy import Column
+from sqlalchemy import Boolean, Column, String
 from app.business.common.schema.base import BaseModel
 from sqlalchemy.orm import relationship
 

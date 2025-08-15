@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Generic
 
 from app.core.data.model_type import ModelType, CreateSchemaType, UpdateSchemaType
-from app.business.common.view_model.pagingation import PaginationRequest, PaginationResponse
+from app.business.common.model.pagingation import PaginationRequest, PaginationResponse
 
 class BaseRepository(Generic[ModelType, CreateSchemaType, UpdateSchemaType], ABC):
 

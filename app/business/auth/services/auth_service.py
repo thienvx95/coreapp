@@ -5,7 +5,7 @@ from app.business.account.service.user_service import UserService
 from app.core.utils.password import hash_password, verify_password
 from jose import JWTError, jwt
 from app.core.config import settings
-from app.business.auth.view_model import TokenData
+from app.business.auth.model import AuthToken
 import uuid
 
 class AuthService:
@@ -71,7 +71,7 @@ class AuthService:
         
         return encoded_jwt
      
-    def get_token_data(self, user: User) -> TokenData:
+    def get_token_data(self, user: User) -> AuthToken:
         """
         Get the token data for the user.
         """

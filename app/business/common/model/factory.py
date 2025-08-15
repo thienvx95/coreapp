@@ -1,5 +1,5 @@
 from typing import Dict, Type
-from app.business.common.view_model.base import BaseViewModelMapper
+from app.business.common.model.base import BaseViewModelMapper
 
 class ViewModelFactory:
     """

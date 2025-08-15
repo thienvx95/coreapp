@@ -6,7 +6,7 @@ from bson import ObjectId
 from app.core.data.base_repository import BaseRepository
 from app.core.data.model_type import ModelType, CreateSchemaType, UpdateSchemaType
 from app.core.logging import logger
-from app.business.common.view_model.pagingation import PaginationRequest, PaginationResponse
+from app.business.common.model.pagingation import PaginationRequest, PaginationResponse
 
 
 class MongoRepository(BaseRepository):

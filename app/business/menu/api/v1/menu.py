@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from app.business.menu.entities.menu import Menu
 from app.business.menu.services.menu_service import MenuService
 from app.business.menu.view_model.menu_viewmodel import MenuCreate, MenuUpdate
-from app.business.roles.services.role_service import RoleService
+from app.business.account.service.role_service import RoleService
 from app.core.container import Container
 
 router = APIRouter()

@@ -9,12 +9,12 @@ from app.core.data.base_db import BaseDatabaseProvider
 class MongoDB(BaseDatabaseProvider):
     db: AsyncMongoClient
     def __init__(self):
-        self.db = AsyncMongoClient(settings.MONGODB_URL, uuidRepresentation="standard")
+        self.db = AsyncMongoClient(settings.DATABASE_URL, uuidRepresentation="standard")
     def get_database(self) -> AsyncDatabase:
         return self.db.get_database(settings.DATABASE_NAME)
 
     async def connect(self):
-        self.db = AsyncMongoClient(settings.MONGODB_URL, uuidRepresentation="standard")
+        self.db = AsyncMongoClient(settings.DATABASE_URL, uuidRepresentation="standard")
 
     async def close(self):
         await self.db.close()

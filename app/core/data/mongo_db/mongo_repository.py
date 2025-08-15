@@ -11,16 +11,14 @@ from app.business.common.view_model.pagingation import PaginationRequest, Pagina
 
 class MongoRepository(BaseRepository):
     db: AsyncDatabase
-    collection: AsyncCollection
     model: Type[ModelType]
     def __init__(
         self,
         db: AsyncDatabase,
-        collection_name: str,
         model: Type[ModelType]
     ):
         self.db = db
-        self.collection = db[collection_name]
+        self.collection = getattr(model, "__tablename__", None)
         self.model = model
 
 

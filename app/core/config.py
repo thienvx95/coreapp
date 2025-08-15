@@ -19,8 +19,9 @@ class Settings(BaseSettings):
 
     # Database Provider
     DB_PROVIDER: str
+    DATABASE_URL: str
+    
     # MongoDB Settings
-    MONGODB_URL: str
     DATABASE_NAME: str
     MONGODB_MAX_CONNECTIONS: int = 100
     MONGODB_MIN_CONNECTIONS: int = 1

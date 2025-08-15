@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from app.business.permission.services.permission_service import PermissionService
 from app.business.menu.services.menu_service import MenuService
 from app.business.permission.view_model.permission_viewmodel import PermissionCreate, PermissionUpdate
-from app.business.roles.services.role_service import RoleService
+from app.business.account.service.role_service import RoleService
 from app.core.container import Container
 from app.business.permission.schema.permission import Permission
 

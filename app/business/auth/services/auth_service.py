@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta, UTC
 from typing import Optional
 from app.business.user.entities import User
-from app.business.user.services.user_service import UserService
+from app.business.account.service.user_service import UserService
 from app.core.utils.password import hash_password, verify_password
 from jose import JWTError, jwt
 from app.core.config import settings

@@ -1,6 +1,6 @@
 from app.business.common.services.base import BaseService
 from app.business.account.schema.role import Role
-from app.business.roles.view_model.role_viewmodel import RoleCreate, RoleUpdate
+from app.business.account.model.role_viewmodel import RoleCreate, RoleUpdate
 
 
 class RoleService(BaseService[Role, RoleCreate, RoleUpdate]):

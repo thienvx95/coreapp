@@ -1,21 +1,31 @@
-from typing import Dict
+from abc import ABC, abstractmethod
+from typing import Any
 
-from app.core.config import settings
-from app.core.data.base_db import BaseDatabaseProvider
-from app.core.data.mongo_db.mongodb import MongoDB
+class BaseDatabaseProvider(ABC):
+    @abstractmethod
+    def get_database(self) -> Any:
+        pass
 
-class DBFactory:
-    provider = None
-    _instance = None
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-        return cls._instance
+    @abstractmethod
+    async def connect(self):
+        pass
 
-    def get_provider(self) -> BaseDatabaseProvider:
-        if self.provider is None:
-            if settings.DB_PROVIDER.lower() == "mongodb":
-                 self.provider = MongoDB()
-            else:
-                raise NotImplementedError
-        return self.provider
+    @abstractmethod
+    async def close(self):
+        pass
+
+    @abstractmethod
+    async def ping(self):
+        pass
+
+    @abstractmethod
+    def create_table(self):
+        pass
+
+    @abstractmethod
+    async def get_database_name(self) -> str:
+        pass
+
+    @abstractmethod
+    async def get_database_version(self) -> str:
+        pass

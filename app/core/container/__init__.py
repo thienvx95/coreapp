@@ -1,8 +1,8 @@
 from app.business.application_info.services.application_info_service import ApplicationInfoService
 from dependency_injector import containers, providers
 from app.business.account.schema.user import User
-from app.business.user.services.user_service import UserService
-from app.business.roles.services.role_service import RoleService
+from app.business.account.service.user_service import UserService
+from app.business.account.service.role_service import RoleService
 from app.business.menu.services.menu_service import MenuService
 from app.business.permission.services.permission_service import PermissionService
 from app.business.setting.services.setting_service import SettingService

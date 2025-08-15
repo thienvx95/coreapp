@@ -1,6 +1,8 @@
-from typing import List, Optional
+from typing import List, Optional, Union
 from pydantic import BaseModel
-from app.business.setting.entities.setting import SettingValue
+
+# Define a type for setting values
+SettingValue = Union[bool, str, int, List[str], None]
 
 class SettingSelectOptionCreate(BaseModel):
     """

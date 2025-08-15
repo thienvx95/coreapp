@@ -1,6 +1,6 @@
 from app.business.common.services.base import BaseService
-from app.business.setting.entities.setting import Setting
-from app.business.setting.view_model.setting_viewmodel import SettingCreate, SettingUpdate
+from app.business.setting.schema import Setting
+from app.business.setting.model.setting_viewmodel import SettingCreate, SettingUpdate
 from typing import List, Optional
 
 

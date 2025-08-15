@@ -34,6 +34,3 @@ class Menu(BaseModel):
                 "isActive": True
             }
         }
-
-# This is needed for the self-referencing type hint to work
-Menu.model_rebuild()

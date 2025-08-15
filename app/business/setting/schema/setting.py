@@ -1,25 +1,5 @@
-from typing import List, Union
-from pydantic import Field
 from sqlalchemy import JSON, Boolean, Column, Integer, String
 from app.business.common.schema.base import BaseModel
-
-class SettingSelectOption(BaseModel):
-    """
-    Setting select option model representing an option for select and multiSelect settings.
-    """
-    value: str = Field(..., description="Option value")
-    label: str = Field(..., description="Option display label")
-
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "value": "option1",
-                "label": "Option 1"
-            }
-        }
-
-# Define a type for setting values
-SettingValue = Union[bool, str, int, List[str], None]
 
 class Setting(BaseModel):
     """

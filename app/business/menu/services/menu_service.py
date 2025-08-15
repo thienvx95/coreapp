@@ -1,6 +1,6 @@
-from app.business.menu.view_model.menu_viewmodel import MenuCreate, MenuUpdate
+from app.business.menu.model.menu_viewmodel import MenuCreate, MenuUpdate
 from app.business.common.services.base import BaseService
-from app.business.menu.entities.menu import Menu
+from app.business.menu.schema.menu import Menu
 from typing import List
 
 

@@ -6,20 +6,20 @@ class Menu(BaseModel):
     Menu model representing a navigation menu item in the system.
     """
     __tablename__ = "menus"
-    access = Column(String, nullable=True)
-    authority = Column(String, nullable=False)
-    children = Column(String, nullable=True)
+    access = Column(String(20), nullable=True)
+    authority = Column(String(20), nullable=False)
+    children = Column(String(20), nullable=True)
     hideChildrenInMenu = Column(Boolean, nullable=True)
     hideInMenu = Column(Boolean, nullable=True)
-    icon = Column(String, nullable=True)
-    component = Column(String, nullable=True)
-    name = Column(String, nullable=True)
-    path = Column(String, nullable=False)
+    icon = Column(String(20), nullable=True)
+    component = Column(String(20), nullable=True)
+    name = Column(String(20), nullable=True)
+    path = Column(String(20), nullable=False)
     layout = Column(Boolean, nullable=False)
-    redirect = Column(String, nullable=True)
+    redirect = Column(String(100), nullable=True)
     exact = Column(Boolean, nullable=True)
     sortOrder = Column(Integer, nullable=True)
-    parentId = Column(String, nullable=True)
+    parentId = Column(String(20), nullable=True)
     isActive = Column(Boolean, nullable=False)
 
     class Config:

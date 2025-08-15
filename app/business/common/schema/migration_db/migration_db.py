@@ -3,6 +3,6 @@ from app.business.common.schema.base import BaseModel
 
 class MigrationDB(BaseModel):
     __tablename__ = "migrationDbs"
-    fileName = Column(String, nullable=False)
+    fileName = Column(String(20), nullable=False)
     applied_at = Column(DateTime, nullable=False)
-    db_provider = Column(String, nullable=False)
+    db_provider = Column(String(20), nullable=False)

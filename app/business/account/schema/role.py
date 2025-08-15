@@ -1,5 +1,8 @@
+from tokenize import String
 from typing import ClassVar, Optional, Annotated
+from xmlrpc.client import Boolean
 from pydantic import Field, StringConstraints
+from sqlalchemy import Column
 from app.business.common.schema.base import BaseModel
 from sqlalchemy.orm import relationship
 
@@ -7,10 +10,10 @@ class Role(BaseModel):
     """
     Role model representing a user role in the system.
     """
-    collection_name: ClassVar[str] = "roles"
-    name: Annotated[str, StringConstraints(min_length=2, max_length=50)] = Field(..., description="Role name")
-    description: Optional[str] = Field(None, description="Role description")
-    is_active: bool = Field(default=True, description="Whether the role is active")
+    __tablename__ = "roles"
+    name = Column(String(80), unique=True, nullable=False, index=True)
+    description = Column(String(255), nullable=True)
+    is_active = Column(Boolean, default=True, nullable=False)
     
     # Many-to-many relationship with User
     users = relationship(

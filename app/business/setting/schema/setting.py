@@ -26,15 +26,15 @@ class Setting(BaseModel):
     Setting model representing a system setting.
     """
     __tablename__ = "settings"
-    type = Column(String, nullable=False)
+    type = Column(String(20), nullable=False)
     public = Column(Boolean, nullable=False)
-    group = Column(String, nullable=True)
-    section = Column(String, nullable=True)
-    name = Column(String, nullable=False)
-    value = Column(String, nullable=True)
+    group = Column(String(20), nullable=True)
+    section = Column(String(20), nullable=True)
+    name = Column(String(20), nullable=False)
+    value = Column(String(20), nullable=True)
     sorter = Column(Integer, nullable=True)
     hidden = Column(Boolean, nullable=False)
-    description = Column(String, nullable=True)
+    description = Column(String(20), nullable=True)
     values = Column(JSON, nullable=True)
 
     class Config:

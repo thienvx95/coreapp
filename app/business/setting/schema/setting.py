@@ -1,5 +1,6 @@
-from typing import ClassVar, List, Optional, Union, Any
+from typing import List, Union
 from pydantic import Field
+from sqlalchemy import JSON, Boolean, Column, Integer, String
 from app.business.common.entities.base import BaseModel
 
 class SettingSelectOption(BaseModel):
@@ -24,17 +25,17 @@ class Setting(BaseModel):
     """
     Setting model representing a system setting.
     """
-    collection_name: ClassVar[str] = "settings"
-    type: str = Field(..., description="Setting type (boolean, string, int, select, multiSelect, font, date, group, section)")
-    public: bool = Field(default=False, description="Whether the setting is public")
-    group: Optional[str] = Field(None, description="Group the setting belongs to")
-    section: Optional[str] = Field(None, description="Section within the group")
-    name: str = Field(..., description="Setting name")
-    value: Optional[SettingValue] = Field(None, description="Setting value")
-    sorter: Optional[int] = Field(None, description="Order for sorting settings")
-    hidden: bool = Field(default=False, description="Whether the setting is hidden")
-    description: Optional[str] = Field(None, description="Setting description")
-    values: Optional[List[SettingSelectOption]] = Field(None, description="Available options for select and multiSelect settings")
+    __tablename__ = "settings"
+    type = Column(String, nullable=False)
+    public = Column(Boolean, nullable=False)
+    group = Column(String, nullable=True)
+    section = Column(String, nullable=True)
+    name = Column(String, nullable=False)
+    value = Column(String, nullable=True)
+    sorter = Column(Integer, nullable=True)
+    hidden = Column(Boolean, nullable=False)
+    description = Column(String, nullable=True)
+    values = Column(JSON, nullable=True)
 
     class Config:
         json_schema_extra = {

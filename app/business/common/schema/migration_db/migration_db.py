@@ -1,8 +1,8 @@
 from datetime import datetime
 from sqlmodel import Field
-from app.business.common.schema.base import BaseModel
+from app.business.common.schema.base import SqlBaseModel
 
-class MigrationDB(BaseModel, table=True):
+class MigrationDB(SqlBaseModel, table=True):
     __tablename__ = "migrationDbs"
     fileName: str = Field(nullable=False, max_length=20)
     applied_at: datetime = Field(nullable=False)

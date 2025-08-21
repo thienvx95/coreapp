@@ -51,7 +51,7 @@ class ApplicationInfoService:
                     database_version=db_version,
                     database_provider=settings.DB_PROVIDER,
                     cache_provider=settings.CACHE_PROVIDER,
-                    database_migration=getattr(migration_db, "_id", "")
+                    database_migration=getattr(migration_db, "id", "")
                 )
                 await self.repository.insert_one(application_info)
             else:
@@ -60,8 +60,8 @@ class ApplicationInfoService:
                 application_info.database_version=db_version
                 application_info.database_provider=settings.DB_PROVIDER
                 application_info.cache_provider=settings.CACHE_PROVIDER
-                application_info.database_migration=getattr(migration_db, "_id", "")
-                await self.repository.update_one({'_id': application_info.id }, application_info)
+                application_info.database_migration=getattr(migration_db, "id", "")
+                await self.repository.update_one({'id': application_info.id }, application_info)
      
             # Optionally update the cached info after creation
             self.application_info = application_info

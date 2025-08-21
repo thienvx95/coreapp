@@ -4,8 +4,8 @@ from pydantic import AnyHttpUrl, validator
 
 class Settings(BaseSettings):
     # Application Settings
-    APP_NAME: str = "FastAPI MongoDB"
-    APP_VERSION: str = "1.0.0"
+    APP_NAME: str = "Core App"
+    APP_VERSION: str = "1.0.0"  
     APP_ENV: str = "development"
     DEBUG: bool = True
     API_V1_STR: str = "/api/v1"

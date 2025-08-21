@@ -2,7 +2,7 @@ from app.business.account.schema.user import User
 from app.business.account.schema.user_roles import UserRole
 from app.business.common.schema.base import BaseModel
 from sqlmodel import Field, Relationship
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 from app.business.permission.schema.permission import Permission
 
 if TYPE_CHECKING:
@@ -18,9 +18,9 @@ class Role(BaseModel, table=True):
     is_active: bool = Field(default=True, nullable=False)
     
     # Many-to-many relationship with User
-    users: list["User"] = Relationship(back_populates='roles', link_model=UserRole)
-        # One-to-many relationship with Permission
-    permissions: list['Permission'] = Relationship(back_populates='role', cascade_delete=True)
+    users: Optional[list["User"]] = Relationship(back_populates='roles', link_model=UserRole, sa_relationship_kwargs={"lazy": "selectin"})
+    # One-to-many relationship with Permission
+    permissions: Optional[list['Permission']] = Relationship(back_populates='role', cascade_delete=True, sa_relationship_kwargs={"lazy": "selectin"})
     
     class Config:
         json_schema_extra = {

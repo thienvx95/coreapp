@@ -1,5 +1,6 @@
 from typing import TypeVar
-from pydantic import BaseModel
+from app.business.common.schema.base import BaseModel
+
 
 ModelType = TypeVar("ModelType", bound=BaseModel)
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)

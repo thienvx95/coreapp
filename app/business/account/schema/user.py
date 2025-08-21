@@ -25,7 +25,7 @@ class User(BaseModel, table=True):
     avatar: str = Field(nullable=True, max_length=255)
     language: str = Field(nullable=False, max_length=5)
     password_changed_at: datetime = Field(nullable=True)
-    last_ip_address: str = Field(nullable=False, max_length=50)
+    last_ip_address: str = Field(nullable=True, max_length=50)
     
     # Many-to-many relationship with Role
     roles: list['Role'] = Relationship(back_populates='users', link_model=UserRole)

@@ -1,1 +1,1 @@
-[{"_id":"Admin","description":"Administrator","isActive":true},{"_id":"Member","description":"User","isActive":true}]
+[{"name":"Admin","description":"Administrator","is_active":true},{"name":"Member","description":"User","is_active":true}]

@@ -1,7 +1,7 @@
 from sqlmodel import Field
-from app.business.common.schema.base import BaseModel
+from app.business.common.schema.base import SqlBaseModel
 
-class DomainHost(BaseModel, table=True):
+class DomainHost(SqlBaseModel, table=True):
     __tablename__ = "domainHost"
     name: str = Field(nullable=False, max_length=20)
     port: int = Field(nullable=False)

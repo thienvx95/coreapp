@@ -24,11 +24,11 @@ class PostgreSqlRepository(BaseRepository):
         try:
             self.db.add_all(data)
             self.db.commit()
-            self.db.refresh(data)
-            return data
+            refresh_data = [self.db.refresh(item) for item in data]
+            return refresh_data
         except Exception as e:
             self.db.rollback()
-            logger.error(f"Error inserting many data: {e}")
+            logger.error(f"Error inserting many data for model {self.model.__name__}: {e}")
             raise e
         finally:
             self.db.close()
@@ -44,10 +44,9 @@ class PostgreSqlRepository(BaseRepository):
         try:
             self.db.add(data)
             self.db.commit()
-            self.db.refresh(data)
         except Exception as e:
             self.db.rollback()
-            logger.error(f"Error inserting one data: {e}")
+            logger.error(f"Error inserting one data for model {self.model.__name__}: {e}")
             raise e
         finally:
             self.db.close()
@@ -73,7 +72,7 @@ class PostgreSqlRepository(BaseRepository):
                 return data
         except Exception as e:
             self.db.rollback()
-            logger.error(f"Error inserting if not exist data: {e}")
+            logger.error(f"Error inserting if not exist data for model {self.model.__name__}: {e}")
             raise e
         finally:
             self.db.close()
@@ -102,7 +101,7 @@ class PostgreSqlRepository(BaseRepository):
                 return True
         except Exception as e:
             self.db.rollback()
-            logger.error(f"Error updating one data: {e}")
+            logger.error(f"Error updating one data for model {self.model.__name__}: {e}")
             raise e
         finally:
             self.db.close()
@@ -126,7 +125,7 @@ class PostgreSqlRepository(BaseRepository):
             return True
         except Exception as e:
             self.db.rollback()
-            logger.error(f"Error updating many data: {e}")
+            logger.exception(f"Error updating many data for model {self.model.__name__}: {e}")
             raise e
         finally:
             self.db.close()
@@ -145,7 +144,7 @@ class PostgreSqlRepository(BaseRepository):
             return True
         except Exception as e:
             self.db.rollback()
-            logger.error(f"Error bulk write data: {e}")
+            logger.exception(f"Error bulk write data for model {self.model.__name__}: {e}")
             raise e
         finally:
             self.db.close()
@@ -164,7 +163,7 @@ class PostgreSqlRepository(BaseRepository):
             return True
         except Exception as e:
             self.db.rollback()
-            logger.error(f"Error deleting one data: {e}")
+            logger.exception(f"Error deleting one data for model {self.model.__name__}: {e}")
             raise e
         finally:
             self.db.close()
@@ -180,7 +179,7 @@ class PostgreSqlRepository(BaseRepository):
         try:
             return self.db.query(self.model).filter_by(**filter_dict).first()
         except Exception as e:
-            logger.error(f"Error deleting many data: {e}")
+            logger.exception(f"Error deleting many data for model {self.model.__name__}: {e}")
             raise e
         finally:
             self.db.close()
@@ -197,7 +196,7 @@ class PostgreSqlRepository(BaseRepository):
             data = self.db.query(self.model).filter_by(**filter_dict).first()
             return data
         except Exception as e:
-            logger.error(f"Error finding one data: {e}")
+            logger.error(f"Error finding one data for model {self.model.__name__}: {e}")
             raise e
         finally:
             self.db.close()
@@ -213,7 +212,7 @@ class PostgreSqlRepository(BaseRepository):
         try:
             return self.db.query(self.model).filter_by(**filter_dict).all()
         except Exception as e:
-            logger.error(f"Error finding many data: {e}")
+            logger.exception(f"Error finding many data for model {self.model.__name__}: {e}")
             raise e
         finally:
             self.db.close()
@@ -229,7 +228,7 @@ class PostgreSqlRepository(BaseRepository):
         try:    
             return self.db.query(self.model).filter_by(id=_id).first()
         except Exception as e:
-            logger.error(f"Error finding one data by id: {e}")
+            logger.exception(f"Error finding one data by id for model {self.model.__name__}: {e}")
             raise e
         finally:
             self.db.close()
@@ -245,7 +244,7 @@ class PostgreSqlRepository(BaseRepository):
         try:
             return self.db.query(self.model).filter_by(**request.filter_dict).offset((request.page - 1) * request.limit).limit(request.limit).all()
         except Exception as e:
-            logger.error(f"Error finding paging data: {e}")
+            logger.exception(f"Error finding paging data for model {self.model.__name__}: {e}")
             raise e
         finally:
             self.db.close()

@@ -11,11 +11,10 @@ def custom_openapi(app: FastAPI):
         title=settings.APP_NAME,
         version=settings.APP_VERSION,
         description="""
-        FastAPI application with MongoDB integration.
+        FastAPI application with Database integration.
         
         ## Features
         * CRUD operations for items
-        * MongoDB integration
         * Async operations
         * Logging
         * Environment configuration

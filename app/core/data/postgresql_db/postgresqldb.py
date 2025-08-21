@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 from app.core.config import settings
 from sqlalchemy.orm import sessionmaker
 from app.core.data.base_db import BaseDatabaseProvider
-from app.business.common.schema.base import BaseModel
+from app.business.common.schema.base import SqlBaseModel
 
 class PostGresqlDB(BaseDatabaseProvider):
     engine: Engine = None
@@ -28,7 +28,7 @@ class PostGresqlDB(BaseDatabaseProvider):
         return self.engine
     
     def create_table(self):
-        BaseModel.metadata.create_all(bind=self.__get_engine())
+        SqlBaseModel.metadata.create_all(bind=self.__get_engine())
 
     def get_database(self):
         if self.SessionLocal is None:

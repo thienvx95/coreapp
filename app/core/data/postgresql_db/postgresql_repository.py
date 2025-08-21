@@ -1,5 +1,6 @@
 
 
+from datetime import datetime, UTC
 from typing import Any, Dict, List, Type
 from app.business.common.model.pagingation.pagination_request import PaginationRequest
 from app.business.common.model.pagingation.pagination_response import PaginationResponse
@@ -91,6 +92,7 @@ class PostgreSqlRepository(BaseRepository):
             if existing_data:
                 for key, value in data.model_dump().items():
                     setattr(existing_data, key, value)
+                existing_data.updated_at = datetime.now(UTC)
                 self.db.commit()
                 return True
             else:
@@ -192,7 +194,8 @@ class PostgreSqlRepository(BaseRepository):
             Found data.
         """
         try:
-            return self.db.query(self.model).filter_by(**filter_dict).first()
+            data = self.db.query(self.model).filter_by(**filter_dict).first()
+            return data
         except Exception as e:
             logger.error(f"Error finding one data: {e}")
             raise e

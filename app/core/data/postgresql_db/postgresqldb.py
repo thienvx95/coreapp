@@ -1,4 +1,6 @@
-from sqlalchemy import Engine, create_engine
+from sqlmodel import create_engine
+from sqlalchemy.engine import Engine
+from sqlalchemy.sql import text
 from app.core.config import settings
 from sqlalchemy.orm import sessionmaker
 from app.core.data.base_db import BaseDatabaseProvider
@@ -37,4 +39,4 @@ class PostGresqlDB(BaseDatabaseProvider):
         return settings.DATABASE_NAME
 
     async def get_database_version(self) -> str:
-        return self.engine.execute("SELECT version()").scalar()
+        return self.get_database().execute(text("SELECT version()")).scalar()

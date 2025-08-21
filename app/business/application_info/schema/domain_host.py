@@ -1,12 +1,11 @@
-from sqlalchemy import Boolean, Column, Integer, String
-
+from sqlmodel import Field
 from app.business.common.schema.base import BaseModel
 
-class DomainHost(BaseModel):
+class DomainHost(BaseModel, table=True):
     __tablename__ = "domainHost"
-    name = Column(String(20), nullable=False)
-    port = Column(Integer, nullable=False)
-    language = Column(String(5), nullable=False)
-    domain = Column(String(20), nullable=False)
-    scheme = Column(String(10), nullable=False)
-    primary = Column(Boolean, nullable=False)
+    name: str = Field(nullable=False, max_length=20)
+    port: int = Field(nullable=False)
+    language: str = Field(nullable=False, max_length=5)
+    domain: str = Field(nullable=False, max_length=20)
+    scheme: str = Field(nullable=False, max_length=10)
+    primary: bool = Field(nullable=False)

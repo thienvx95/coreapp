@@ -1,34 +1,34 @@
-
-from sqlalchemy import Boolean, Column, DateTime, String
+from datetime import datetime
 import hashlib
-from app.business.common.schema.base import BaseModel
-from sqlalchemy.ext.hybrid import hybrid_property
-from sqlalchemy.orm import relationship
 
-class User(BaseModel):
+from typing import TYPE_CHECKING
+from app.business.account.schema.user_roles import UserRole
+from app.business.common.schema.base import BaseModel
+from sqlmodel import Field, Relationship
+from sqlalchemy.ext.hybrid import hybrid_property
+
+if TYPE_CHECKING:
+    from app.business.account.schema.role import Role
+
+class User(BaseModel, table=True):
     """
     User model representing a system user.
     """
     __tablename__ = "users"
-    email = Column(String(120), unique=True, nullable=False, index=True)
-    username = Column(String(80), unique=True, nullable=False, index=True)
-    password = Column(String(255), nullable=False)
-    first_name = Column(String(50), nullable=True)
-    last_name = Column(String(50), nullable=True)
-    is_active = Column(Boolean, default=True, nullable=False)
-    last_login = Column(DateTime, nullable=True)
-    avatar = Column(String(255), nullable=True)
-    language = Column(String(5), nullable=False)
-    password_changed_at = Column(DateTime, nullable=True)
-    last_ip_address = Column(String(50), nullable=False)
+    email: str = Field(unique=True, nullable=False, index=True, max_length=120)
+    username: str = Field(unique=True, nullable=False, index=True, max_length=80)
+    password: str = Field(nullable=False, max_length=255)
+    first_name: str = Field(nullable=True, max_length=50)
+    last_name: str = Field(nullable=True, max_length=50)
+    is_active: bool = Field(default=True, nullable=False)
+    last_login: datetime = Field(nullable=True)
+    avatar: str = Field(nullable=True, max_length=255)
+    language: str = Field(nullable=False, max_length=5)
+    password_changed_at: datetime = Field(nullable=True)
+    last_ip_address: str = Field(nullable=False, max_length=50)
     
     # Many-to-many relationship with Role
-    roles = relationship(
-        'Role',
-        secondary='userRoles',
-        back_populates='users',
-        lazy='select'
-    )
+    roles: list['Role'] = Relationship(back_populates='users', link_model=UserRole)
     
     @hybrid_property
     def avatar(self):

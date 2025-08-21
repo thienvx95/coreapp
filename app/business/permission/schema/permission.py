@@ -1,20 +1,24 @@
+from typing import TYPE_CHECKING
+import uuid
 from app.business.common.schema.base import BaseModel
-from sqlalchemy import Column, String, ForeignKey, UUID
-from sqlalchemy.orm import relationship
+from sqlmodel import Field, Relationship
 
-class Permission(BaseModel):
+if TYPE_CHECKING:
+    from app.business.account.schema.role import Role
+
+class Permission(BaseModel, table=True):
     """
     Permission model representing access rights to a menu item for a specific role.
     """ 
     __tablename__ = 'permissions'
-    name = Column(String(80), nullable=False, index=True)
-    resource = Column(String(80), nullable=False)  # e.g., 'user', 'post', 'admin'
-    action = Column(String(50), nullable=False)    # e.g., 'create', 'read', 'update', 'delete'
-    description = Column(String(255), nullable=True)
-    role_id = Column(UUID(as_uuid=True), ForeignKey('roles.id'), nullable=False)
+    name: str = Field(nullable=False, index=True, max_length=80)
+    resource: str = Field(nullable=False, max_length=80)  # e.g., 'user', 'post', 'admin'
+    action: str = Field(nullable=False, max_length=50)    # e.g., 'create', 'read', 'update', 'delete'
+    description: str = Field(nullable=True, max_length=255)
+    role_id: uuid.UUID = Field(nullable=False, foreign_key="roles.id")
     
     # Many-to-one relationship with Role
-    role = relationship('Role', back_populates='permissions')
+    role: 'Role' = Relationship(back_populates='permissions')
     def __repr__(self):
         return f'<Permission {self.name}: {self.action} on {self.resource}>'
 

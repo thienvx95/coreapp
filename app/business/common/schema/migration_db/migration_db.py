@@ -1,8 +1,9 @@
-from sqlalchemy import Column, DateTime, String
+from datetime import datetime
+from sqlmodel import Field
 from app.business.common.schema.base import BaseModel
 
-class MigrationDB(BaseModel):
+class MigrationDB(BaseModel, table=True):
     __tablename__ = "migrationDbs"
-    fileName = Column(String(20), nullable=False)
-    applied_at = Column(DateTime, nullable=False)
-    db_provider = Column(String(20), nullable=False)
+    fileName: str = Field(nullable=False, max_length=20)
+    applied_at: datetime = Field(nullable=False)
+    db_provider: str = Field(nullable=False, max_length=20)

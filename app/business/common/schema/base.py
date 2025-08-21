@@ -1,20 +1,15 @@
+from datetime import datetime, UTC
 import uuid
-from sqlalchemy import UUID, Column, DateTime
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.sql import func
+from sqlalchemy import Column, DateTime, func, text
+from sqlmodel import SQLModel, Field, UUID
 
-Base = declarative_base()
-
-class BaseModel(Base):
+class BaseModel(SQLModel):
     __abstract__ = True        
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True, nullable=False)
-    created_at = Column(DateTime, default=func.now(), nullable=False)
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now(), nullable=False)
-    created_by = Column(UUID(as_uuid=True), nullable=True)
-    updated_by = Column(UUID(as_uuid=True), nullable=True)
-    
-    def __repr__(self):
-        return f'<{self.__class__.__name__} {self.id}>'
+    id: uuid.UUID = Field(default=None, sa_type=UUID(as_uuid=True), sa_column_kwargs={"server_default": text("gen_random_uuid()"),}, primary_key=True, unique=True, nullable=False)
+    created_at: datetime = Field(default=None, sa_type=DateTime(timezone=True), sa_column_kwargs={"server_default": func.now()})
+    updated_at: datetime = Field(default=None, sa_type=DateTime(timezone=True), sa_column_kwargs={"onupdate": func.utcnow()}, nullable=True)
+    created_by: uuid.UUID = Field(nullable=True)
+    updated_by: uuid.UUID = Field(nullable=True)
     
     # Utility functions for audit tracking
     def set_audit_fields(obj, user_id=None):
@@ -23,3 +18,4 @@ class BaseModel(Base):
             obj.created_by = user_id
         if hasattr(obj, 'updated_by'):
             obj.updated_by = user_id
+        obj.updated_at = datetime.now(UTC)

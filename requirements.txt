@@ -11,3 +11,4 @@ passlib==1.7.4
 dependency_injector==4.48.0
 python-jose==3.5.0
 psycopg2-binary==2.9.10
+sqlmodel==0.0.24

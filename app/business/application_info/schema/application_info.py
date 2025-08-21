@@ -1,14 +1,13 @@
 import uuid
-from sqlalchemy import UUID, Column, String
+from sqlmodel import Field 
+from app.business.common.schema.base import BaseModel
 
-from app.business.common.schema.base import Base
-
-class ApplicationInfo(Base):
+class ApplicationInfo(BaseModel, table=True):
     __tablename__ = "applicationInfo"
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True, nullable=False)
-    app_version = Column(String(10), nullable=False)
-    database_provider = Column(String(20), nullable=False)
-    database_name = Column(String(20), nullable=False)
-    database_version = Column(String(100), nullable=False)
-    database_migration = Column(String(20), nullable=True)
-    cache_provider = Column(String(20), nullable=False)
+    id: uuid.UUID = Field(primary_key=True, default=uuid.uuid4, unique=True, nullable=False)
+    app_version: str = Field(nullable=False, max_length=10)
+    database_provider: str = Field(nullable=False, max_length=20)
+    database_name: str = Field(nullable=False, max_length=20)
+    database_version: str = Field(nullable=False, max_length=100)
+    database_migration: str = Field(nullable=True, max_length=20)
+    cache_provider: str = Field(nullable=False, max_length=20)

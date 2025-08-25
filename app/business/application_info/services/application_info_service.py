@@ -24,7 +24,6 @@ class ApplicationInfoService:
 
             # 2. If not cached, try to load from the repository
             loaded_info: ApplicationInfo | None = await self.repository.find_one({})
-            print(loaded_info)
             # 3. If loaded successfully, cache it
             if loaded_info is not None:
                 self.application_info = loaded_info

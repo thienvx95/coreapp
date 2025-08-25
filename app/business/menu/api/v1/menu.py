@@ -1,6 +1,6 @@
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
-from app.business.menu.schema import Menu
+from app.business.menu.schema.menu import Menu
 from app.business.menu.services.menu_service import MenuService
 from app.business.menu.model import MenuCreate, MenuUpdate, MenuViewModel
 from app.business.account.service.role_service import RoleService

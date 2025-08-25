@@ -9,7 +9,7 @@ class ErrorHandlerMiddleware(BaseHTTPMiddleware):
             return await call_next(request)
         except Exception as e:
             # Log the error
-            logger.exception(f"Error processing request: {str(e)}")
+            logger.error(f"Error processing request: {str(e)}")
             
             # Return error response
             return JSONResponse(

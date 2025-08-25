@@ -1,13 +1,14 @@
 [
   {
-    "_id": "DASHBOARD_ADMIN",
+    "key": "DASHBOARD_ADMIN",
     "authority": ["Admin"],
+    "path": "/dashboard/admin/",
     "name": "admin",
     "icon": "crown",
     "isActive": true
   },
   {
-    "_id": "DASHBOARD_ADMIN_ACCOUNT_MANAGEMENT",
+    "key": "DASHBOARD_ADMIN_ACCOUNT_MANAGEMENT",
     "authority": ["Admin"],
     "path": "/dashboard/admin/account-management/",
     "name": "account-management",
@@ -15,7 +16,7 @@
     "isActive": true
   },
   {
-    "_id": "DASHBOARD_ADMIN_USER_LIST_PAGE",
+    "key": "DASHBOARD_ADMIN_USER_LIST_PAGE",
     "authority": ["Admin"],
     "path": "/dashboard/admin/account-management/users",
     "name": "user-list",
@@ -23,7 +24,7 @@
     "isActive": true
   },
   {
-    "_id": "DASHBOARD_ADMIN_ROLE_LIST_PAGE",
+    "key": "DASHBOARD_ADMIN_ROLE_LIST_PAGE",
     "authority": ["Admin"],
     "path": "/dashboard/admin/account-management/roles",
     "name": "role-list",
@@ -31,7 +32,7 @@
     "isActive": true
   },
   {
-    "_id": "DASHBOARD_ADMIN_CONFIGURATION",
+    "key": "DASHBOARD_ADMIN_CONFIGURATION",
     "authority": ["Admin"],
     "path": "/dashboard/admin/configuration/",
     "name": "configuration",
@@ -39,7 +40,7 @@
     "isActive": true
   },
   {
-    "_id": "DASHBOARD_ADMIN_MENU_LIST_PAGE",
+    "key": "DASHBOARD_ADMIN_MENU_LIST_PAGE",
     "authority": ["Admin"],
     "path": "/dashboard/admin/configuration/menus",
     "name": "menu-list",
@@ -47,7 +48,7 @@
     "isActive": true
   },
   {
-    "_id": "DASHBOARD_ADMIN_SYSTEM",
+    "key": "DASHBOARD_ADMIN_SYSTEM",
     "authority": ["Admin"],
     "path": "/dashboard/admin/system/",
     "name": "system",
@@ -55,7 +56,7 @@
     "isActive": true
   },
   {
-    "_id": "DASHBOARD_ADMIN_SETTING_LIST_PAGE",
+    "key": "DASHBOARD_ADMIN_SETTING_LIST_PAGE",
     "authority": ["Admin"],
     "path": "/dashboard/admin/system/settings",
     "name": "settings",

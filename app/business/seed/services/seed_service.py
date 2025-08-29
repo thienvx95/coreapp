@@ -1,7 +1,7 @@
 import json
 from typing import List
 
-from app.business.menu.schema import Menu
+from app.business.menu.schema.menu import Menu
 from app.business.account.schema.role import Role
 from app.business.seed.model import ModelSeed
 from app.business.setting.schema import Setting
@@ -46,8 +46,8 @@ class SeederService:
                 list_menu_data = self.read_file("./seed/3.menus/menus.json")
                 list_menu = []
                 for item in list_menu_data:
-                    item["roles"] = [admin_role]
                     menu = Menu(**item)
+                    menu.roles.append(admin_role)
                     list_menu.append(menu)
 
                 await menu_repo.insert_many(list_menu)
